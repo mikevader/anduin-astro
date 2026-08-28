@@ -1,6 +1,6 @@
 # ADR-0005: Interrogation covers the repo, not only me
 
-- **Status:** Open — proposed during Iteration 1, needs your call before Iteration 2
+- **Status:** Accepted
 - **Date:** 2026-08-28
 - **Question:** does the interrogation step read the source repos, or only ask me?
 
@@ -46,21 +46,57 @@ never committed, so they would be the first thing to fall out of the conversatio
 
 ## Decision
 
-Proposed: **B**. Ask first so the account is uncontaminated, then check CHANGELOG and
-the commits around the relevant dates, then bring the contradictions back as follow-up
-questions.
+**B.** Ask first so the account is uncontaminated, then check the repo, then bring the
+contradictions back as follow-up questions. Four things make that operational.
+
+### The repo read is conditional, not automatic
+
+Only when the agent judges it relevant to this post. Not every dump has a repo behind
+it, and not every dump needs one — the mail service post would have been worth
+publishing on the comparison and the links alone, even if no line of code had ever
+changed. "No repo, not checked" is a valid, recorded outcome, not a gap.
+
+### Public repos are determined live
+
+`gh repo list mikevader --visibility public`, at interrogation time. **No whitelist is
+checked in.** A checked-in list goes stale, and a repo I later switch to private stays
+on it — a stale whitelist is precisely the redaction risk this is supposed to reduce.
+
+### Private repos may be read; what may leave them is limited
+
+Sanitised information from a private repo may be published when it helps the post.
+Never sensitive data: IP addresses and ranges, secrets, tokens, credentials, and
+everything else the redaction rules in [CONTEXT.md](../../CONTEXT.md) name. Those rules
+govern here unchanged, including the standing instruction that a redacted value is
+never cleaned up into the draft — an example value is invented and labelled as invented.
+
+### Read depth
+
+CHANGELOG and commit subjects in the relevant window. Diffs only for the commits that
+actually matter. The window comes from the dump and the conversation; when it cannot be
+derived, ask me for the date rather than guessing at it.
 
 ## Consequences
 
-- The grill skill needs repo access and a way to be pointed at the right repo and
-  the right time window. Not every post has one behind it.
 - Contradictions get raised, never silently resolved. The draft does not get to pick
   the version it likes better — that is C3.
 - The asking half does not get shorter. Rejected approaches, how long something cost,
   and why the obvious path was refused exist only in my head; no repo records them.
-- CHANGELOG plus commit subjects in the relevant window is the cheap, high-yield read.
-  A full diff is rarely needed, and only for the commits that actually matter.
+- **Whether a repo is public decides only whether it may be named and linked.** It does
+  not decide whether its content may be used, and it does not make its content safe:
+  the redaction rules apply to public repos exactly as they do to private ones.
+- The grill depends on `gh` being present and authenticated. When it is not, every repo
+  is treated as private. That is the safe direction, and it degrades the post rather
+  than the redaction.
+- Capture records live outside this repo, alongside the dumps. They may hold raw
+  findings — commit hashes, private repo names, the unsanitised version of a value —
+  because they are working notes, not a public artifact. Only what reaches the draft is
+  governed by the redaction rules.
+- A repo check costs a round trip and often finds nothing. The mail service case says
+  the one time it does find something is worth it.
 
 ## Revisit when
 
-Building the grill skill in Iteration 2.
+A repo read surfaces a contradiction I cannot resolve from memory either, and the post
+has to be written without knowing which version is true. Also revisit if `gh` being
+unavailable turns into the normal case rather than the exception.
