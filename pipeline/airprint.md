@@ -351,7 +351,7 @@ rests on the deciding criterion alone.
 # AirPrint server with Ansible and CUPS (it is simpler to buy a new printer)
 
 I wanted to make my printer available over AirPrint without buying a new one. CUPS and
-Avahi do the work, and the whole setup should be in Ansible.
+Avahi do the work, and the whole thing is implemented with Ansible.
 
 There is a role on Ansible Galaxy for exactly this,
 [`nerab/airprint-server`](https://galaxy.ansible.com/nerab/airprint-server), and I used
@@ -359,7 +359,7 @@ There is a role on Ansible Galaxy for exactly this,
 [One from elektronik-kompendium](https://www.elektronik-kompendium.de/sites/raspberry-pi/2007081.htm) I did
 not use, but it might help somebody else. The role was not entirely satisfying, so I
 made a copy with a few modifications. What was not satisfying about it I cannot tell
-you any more. The copy is what survived.
+you any more.
 
 The role installs the packages, puts the admin user into the `lpadmin` group and pushes
 my own `cupsd.conf`:
@@ -379,8 +379,7 @@ my own `cupsd.conf`:
   tags: apt,cups,airprint
 ```
 
-`python-cups` is still commented out in that list. Whether I tried it and took it out
-again I am not sure any more.
+`python-cups` is still commented out in that list. Could be that I tried it and took it out again.
 
 The printers are copied in as files, from the playbook. The PPD for the Kyocera I
 downloaded from [their website](https://kyoceradiscovery.com/download-center.html?category=technical&prod-category=%20All&product=1102MA2US0&page=2):
@@ -414,7 +413,7 @@ downloaded from [their website](https://kyoceradiscovery.com/download-center.htm
 CUPS itself is then on `https://airprintserver:631`, which is not reachable from
 outside.
 
-One thing is still in the code and I do not know whether it ever mattered. The role
+One thing is still in the code. The role
 notifies `restart CUPS` in lower case, and the handler is called `Restart CUPS`:
 
 ```yaml
@@ -426,7 +425,7 @@ notifies `restart CUPS` in lower case, and the handler is called `Restart CUPS`:
 - name: Restart CUPS
 ```
 
-In the playbook above the same handler is notified with the capital R. Whether the one
+In the playbook above the notify is written with the capital R. Whether the one
 in the role ever fired I do not know.
 
 I never rolled it out. The role is there, the playbook is there, and then the project
@@ -533,3 +532,28 @@ Re-checked after the change: gate 1 still clean, gate 2 — the four URLs are pu
 pages and none is tied to Michael's account or reachable through his router, gate 3 now
 genuinely satisfied. **The other five reported claims from the first pass are
 untouched and still open.**
+
+### Addendum 2026-08-28 - the five reported claims cut
+
+All five untraceable claims from the first pass are gone. Cut or narrowed, never
+rewritten into something new:
+
+| Was | Now | Why |
+|---|---|---|
+| "the whole setup should be in Ansible" | "the whole thing is implemented with Ansible" | the dump says "Implemented with Ansible" - completed, not intended |
+| "The copy is what survived." | cut | no source anywhere |
+| "Whether I tried it and took it out again I am not sure any more." | "Could be that I tried it and took it out again." | F14 is `kann sein`, which concedes a possibility rather than reporting a gap in memory |
+| "One thing is still in the code and I do not know whether it ever mattered." | "One thing is still in the code." | F8 answers only whether the handler fired |
+| "the same handler is notified with the capital R" | "the notify is written with the capital R" | "the same handler" asserted that a post_task notify resolves to the role's handler, which is Ansible behaviour nobody sourced |
+
+Two of these were not decoration. The handler sentence made a technical claim that could
+be wrong in a published post, and the `kann sein` rendering misreported what Michael
+said. The other three were flourishes.
+
+Re-checked: gate 1 clean, gate 2 unchanged (no value added or removed), gate 3 unchanged
+(all four dump URLs still in the post). **No untraceable claims remain.**
+
+A note on the edit itself: the first attempt at these five replacements matched the
+quotations in this review section rather than the draft, and aborted on a uniqueness
+check before writing anything. Section 9 quotes section 8 verbatim by design, so any
+future edit to a draft has to be scoped to section 8.
