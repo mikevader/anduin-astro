@@ -73,37 +73,32 @@ copy yet. Do not invent one.
 Not style preferences. These apply to every public artifact: posts, diagrams, commit
 messages, code samples, alt text, file names, URLs.
 
+The governing test: **does this hand an attacker direct attack surface on the public
+internet?** Concretely, is it reachable through my router.
+
 Never publish:
 
-- IP addresses or ranges, internal hostnames, ports, internal URLs
-- Vault files, secret files, `.env` files, anything containing a password or token
-- Account names or identifiers I use with any provider
+- Anything exposed to the public internet: external endpoints, public hostnames of my
+  services, ports open to the outside, anything reachable through the router
+- Accounts and identifiers I hold with external internet providers, and anything tied
+  to a login. Not "I have an account at $Provider and it is called xyz"
+- Vault files, secret files, `.env` files, anything containing a password, token or key
+- IP addresses and ranges
 - Anything sourced from the private GitOps repo — its namespaces, app names and hosts
   are off-limits, including in passing and including as an aside
-- Anything that lets a reader reconstruct my actual internal topology or enumerate the
-  services I run
+
+Fine to publish:
+
+- **Cluster-internal service names and ports.** `smtp-relay.smtp.svc.cluster.local:25`
+  is not routable from outside and is already in my public docs
+- **The technologies and workloads I run.** "I run Traefik and nginx side by side",
+  "Mailpit runs locally and relays to Mailtrap"
+- **Providers named as part of an evaluation.** "I compared A, B and C, and B lost on
+  X" is the content of the post. Tying a provider to my account or my credentials is
+  not
 
 Sanitising is **not** a final review step. A redacted value never enters a draft in the
 first place: invent an example value and label it as invented.
-
-### What "services" means here
-
-Two different things were being conflated, so this is the confirmed reading:
-
-- **Things running in my cluster** — Kubernetes Services, workloads, the technologies
-  I run — may be written about, within the rules above. "I run Traefik and nginx side
-  by side" is publishable; it is already visible in the public charts repo.
-- **External internet services and the accounts I hold with them** are not. Not "I have
-  an account at $Provider and it is called xyz", not the endpoints, not the
-  identifiers, not the configuration tied to a login.
-
-The governing test is: **does this hand an attacker direct attack surface?** If yes, it
-stays private unless I explicitly approve it for that specific post. Approval is per
-post; it is never standing.
-
-Naming a provider as part of a technical evaluation — "I compared A, B and C, and B
-lost on X" — is normally the content of the post and is fine. Tying a provider to my
-account, my endpoint or my running configuration is not.
 
 **This file obeys its own rules.** It lives in the website repo, which may become
 public, so it does not name the private things it tells you not to name.
