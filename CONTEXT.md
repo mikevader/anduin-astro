@@ -86,12 +86,24 @@ Never publish:
 Sanitising is **not** a final review step. A redacted value never enters a draft in the
 first place: invent an example value and label it as invented.
 
-> **Assumption, needs confirmation (C3):** naming a *technology* is fine, naming an
-> *instance* is not. "I run Traefik and nginx side by side" is publishable — it is
-> already visible in the public charts repo. "Service X answers on host Y at port Z"
-> is not. Under the strictest reading of "readers should not be aware of the services
-> I use", almost no homelab post can be written at all, so I am working from the
-> looser reading until told otherwise.
+### What "services" means here
+
+Two different things were being conflated, so this is the confirmed reading:
+
+- **Things running in my cluster** — Kubernetes Services, workloads, the technologies
+  I run — may be written about, within the rules above. "I run Traefik and nginx side
+  by side" is publishable; it is already visible in the public charts repo.
+- **External internet services and the accounts I hold with them** are not. Not "I have
+  an account at $Provider and it is called xyz", not the endpoints, not the
+  identifiers, not the configuration tied to a login.
+
+The governing test is: **does this hand an attacker direct attack surface?** If yes, it
+stays private unless I explicitly approve it for that specific post. Approval is per
+post; it is never standing.
+
+Naming a provider as part of a technical evaluation — "I compared A, B and C, and B
+lost on X" — is normally the content of the post and is fine. Tying a provider to my
+account, my endpoint or my running configuration is not.
 
 **This file obeys its own rules.** It lives in the website repo, which may become
 public, so it does not name the private things it tells you not to name.
