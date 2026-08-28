@@ -188,6 +188,13 @@ allowed. The image is load-bearing and is referenced in the sentence before it.
    substantial is a defect.
 10. **Code blocks are the payload; prose is connective tissue.** Each block is
     introduced by the sentence directly before it, which says what the block does.
+11. **Fix typos, keep the rhythm.** The corpus is non-native English and that texture
+    is part of the voice. Correct misspellings and doubled words; leave sentence
+    rhythm, word order and directness alone. "Hopefully it took you not the two hours
+    I have spent" keeps its shape. Never smooth prose into idiomatic native-speaker
+    English — that register is most of what makes a draft stop sounding like me, and
+    it is the default a language model reaches for. See
+    [ADR-0004](adr/0004-english-register.md).
 
 ## Prohibitions
 
@@ -225,13 +232,6 @@ so treat it as a first draft that I have not yet confirmed.
   (`post=115`) is an unpublished draft that returns 404 publicly. Both need pasting.
   The anti-sample matters more than any of the five above: knowing what "feels like
   rambling around" to me is the sharpest available signal.
-- **How much do we clean up the English?** The corpus is non-native English —
-  "Unfourtanatly", "the the following snipped", German word order in "Hopefully it took
-  you not the two hours I have spent". My assumption, to be confirmed: fix outright
-  typos, keep the sentence rhythm, the word order and the directness. Smoothing this
-  into idiomatic native-speaker English is most of what would make a draft stop
-  sounding like me — but publishing typos on purpose is a different decision, and it
-  is yours.
 - **The prohibition list is derived, not confirmed.** You had nothing to add when
   asked; it should get revisited the first time a draft feels wrong for a reason not
   covered here.
