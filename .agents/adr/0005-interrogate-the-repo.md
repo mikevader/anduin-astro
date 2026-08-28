@@ -18,10 +18,11 @@ fixes, both on 11 August 2026:
 - `33cbba2` cast `MAILTRAP_SANDBOX` to a boolean, because environment variables are
   strings and the string `"false"` is truthy in Ruby
 
-The second fix was not in the account I gave, and it is the more interesting bug. It
-also puts the first one in question: if sandbox was still truthy at that moment, the
-`inbox_id` was required rather than forbidden, and the lesson I had drawn from it was
-backwards. A draft without C3 would have published that lesson as a fact.
+The second fix was not in the account I gave, and it is the more interesting bug. Asked
+about it directly, I confirmed it: "Du hast recht, der Echte Fehler war string vs
+boolean." The `inbox_id` was my first hypothesis and it did not fix anything. Without
+the repo check, the draft would have published the wrong cause as a fact — with my own
+confirmation behind it, because that is what I remembered.
 
 Memory compresses, and it compresses toward whichever explanation was found last.
 Commit history does not compress. The gap between the two is exactly the material C1

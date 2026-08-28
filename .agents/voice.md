@@ -276,7 +276,9 @@ A draft that rambles is a report about the input, not about the writing.
    how the thing behaves. Dead ends stay in, named and dated in sequence: first I tried
    X, gave up because Y, then Z.
 3. **Name the cost.** Two hours. "After some time of unsuccessful attempts." That
-   number is the most useful thing in the post for future-me.
+   number is the most useful thing in the post for future-me. When the number is gone,
+   say that it took long and say why it was hard to find — never invent a figure, and
+   never drop the cost entirely just because it was not measured.
 4. **"I" for history, "we" for walking through code**, "you" occasionally and dryly.
    The switch from "I tried" to "First we need to create the content" is real and
    consistent — keep it.
