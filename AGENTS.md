@@ -13,8 +13,13 @@ Before writing any prose that will be published, read
 The site (anduin.ch — blog with tags and search, plus a projects page) and the harness
 that produces it. The harness is being built first, deliberately.
 
-Currently at **Iteration 1 of 5: foundation.** Do not build Iterations 2-5, and do not
-scaffold for them. Their abstractions are guesses until Iteration 1 is real.
+**Iteration 1 of 5 (foundation) is complete.** The exit test passed on 2026-08-28: a
+draft written from a raw five-line dump, using only CONTEXT.md and voice.md, was judged
+recognizably mine.
+
+**Iteration 2 (capture to draft: grill, draft and review skills) is next and has not
+been started.** Begin it in a fresh session. Do not scaffold Iterations 3-5 — their
+abstractions are still guesses.
 
 ## Working language
 

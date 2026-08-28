@@ -5,6 +5,11 @@ nothing. Samples plus a list of banned constructions do a lot — so the samples
 substance of this file, and the rules below them are only there to make the pattern
 explicit. When the rules and the samples disagree, the samples win.
 
+**Status: validated.** The Iteration 1 exit test passed on 2026-08-28 — a draft written
+from a five-line dump about mail services, using this file, was judged recognizably
+mine. That is the bar this file has to keep clearing. When a later draft misses it,
+this file is the first suspect, not the draft.
+
 Samples 1-5 are real posts from anduin.ch, 2011-2014. Sample 6 is a Stack Overflow
 question from 2016. The anti-sample is an unpublished draft. **Typos and grammar slips are
 reproduced exactly** — see the open question at the bottom about how far to clean them
