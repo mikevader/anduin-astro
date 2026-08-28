@@ -5,7 +5,8 @@ nothing. Samples plus a list of banned constructions do a lot — so the samples
 substance of this file, and the rules below them are only there to make the pattern
 explicit. When the rules and the samples disagree, the samples win.
 
-All samples are real posts from anduin.ch, 2011-2014. **Typos and grammar slips are
+Samples 1-5 are real posts from anduin.ch, 2011-2014. Sample 6 is a Stack Overflow
+question from 2016. The anti-sample is an unpublished draft. **Typos and grammar slips are
 reproduced exactly** — see the open question at the bottom about how far to clean them
 up. Nothing here was rewritten.
 
@@ -161,6 +162,106 @@ allowed. The image is load-bearing and is referenced in the sentence before it.
 
 ---
 
+## Sample 6 - Stack Overflow question, Rails integration tests (2016)
+
+*Prose verbatim; code blocks omitted and marked. Not a blog post - this is how I write
+when I am asking for help.*
+
+> I have an issue using my session stored `return_to` URL in my integration tests.
+>
+> Because my controller can be accesses from different places I store the referer in
+> the session on the *new* action and redirect to it in my *create* action.
+>
+> `[code]`
+>
+> As I only use the create action in my test I would like to set the session variable
+> in the integration test as I do in my unit test but it doesn't work. I always get
+> redirected to the root path.
+>
+> `[code]`
+>
+> The test fails on the `assert_redirected_to` line.
+>
+> I tried to call `get new_card_path` first but made no difference and now I'm a little
+> bit lost. I don't know if this should basically work but I made a tiny mistake or if
+> I try to do something completely against best practices and should refactor all my
+> interface tests to use something like Selenium or similar tools.
+>
+> I tried as well to provide the session variable as part of the request like the rails
+> guide describes for functional tests with no effects:
+
+**Take from this:** the design constraint comes first and carries its reason with it —
+"Because my controller can be accesses from different places I store the referer in the
+session". Then what was tried, then the exact failing line, then the two possibilities
+that cannot be told apart: a tiny mistake, or the whole approach is wrong. No
+pleasantries, no apology for asking. "now I'm a little bit lost" is the same move as
+"Maybe someday I will find out" in Sample 3.
+
+---
+
+## Anti-sample - "We have not enough real managers!" (unpublished draft)
+
+*Excerpts, verbatim. This one is in the file because it is what I do not want. My own
+description of it: it feels like rambling around.*
+
+> We have not enough real managers!
+>
+> I guess your immediately reaction to that title might be that we have way too many
+> managers ... and we should get rid of some of them. Well maybe I should have said we
+> have not enough leaders or coaches. In the end a manager should always be some sort
+> of coach.
+>
+> But I'm jumping ahead. Why do I think current managers are no sufficient? Well that
+> comes with several patterns in several industries that are disturbing to say the
+> least:
+>
+> [...]
+>
+> **Why is this wrong?**
+>
+> Well its flawed. Economically what is important is not how much was done but how much
+> value was generated!
+>
+> [...]
+>
+> **Why do so many managers fail there?**
+>
+> [...] But they need some indicators to evaluate how their team or department is doing
+> ... like is every employee working 40h a week, do all of them have a high throughput
+> etc.
+
+**What is actually wrong with it**, in the order it goes wrong:
+
+1. **It backpedals in the second sentence.** The title makes a claim, then the text
+   immediately argues with an imagined reader and retreats: "Well maybe I should have
+   said we have not enough leaders or coaches."
+2. **It names its own structural failure inside the text:** "But I'm jumping ahead."
+   That sentence is a symptom of writing while thinking instead of after.
+3. **Rhetorical questions as headings** — "Why is this wrong?", "Why do so many
+   managers fail there?" Both are banned below, and this is where the ban comes from.
+4. **Vague quantifiers stand in for instances:** "several patterns in several
+   industries", "Most companies", "many managers", "to some extent".
+5. **It trails off** on "etc." instead of landing.
+6. Sentence-opening "Well" three times, an exclamation mark in the title.
+
+### The failure signature
+
+The decisive difference is not style. The six samples above are **entirely first-hand**:
+a class I taught, a linker error I chased, two hours I lost, a test that failed on a
+named line. The anti-sample contains **nothing first-hand at all** — no company, no
+incident, no number, no conversation I actually had. Every claim in it is general.
+
+That is the diagnosis, and it is the one thing to take from this file into the rest of
+the harness:
+
+> When a draft starts hedging, backpedalling, asking itself rhetorical questions and
+> reaching for "many" and "most", the prose is not the problem. The dump had nothing
+> first-hand in it. The fix is C2 — refuse, and say what is missing — not a rewrite.
+
+A draft that rambles is a report about the input, not about the writing.
+
+---
+
 ## Rules, derived from the samples
 
 1. **Open with the situation or the surprise.** "In my iOS class @FHNW I set the
@@ -227,11 +328,6 @@ so treat it as a first draft that I have not yet confirmed.
 
 ## Open - do not resolve alone
 
-- **Two samples are still missing.** The Stack Overflow question
-  (`stackoverflow.com/q/36556397`) blocks automated fetching, and the anti-sample
-  (`post=115`) is an unpublished draft that returns 404 publicly. Both need pasting.
-  The anti-sample matters more than any of the five above: knowing what "feels like
-  rambling around" to me is the sharpest available signal.
 - **The prohibition list is derived, not confirmed.** You had nothing to add when
   asked; it should get revisited the first time a draft feels wrong for a reason not
   covered here.
