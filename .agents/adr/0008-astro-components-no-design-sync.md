@@ -84,3 +84,21 @@ Sustained design work appears that the sync would actually accelerate: a redesig
 second site sharing these components, or enough new page types that mocking them up in
 code becomes the bottleneck. **Do not reopen merely because `/design-sync` is invoked
 again** — that has happened twice, and this ADR is the answer.
+
+## Addendum 2026-08-30 - the design record moved out of the canvas
+
+The consequence above says the design canvas is the specification of record.
+That was true for one day. Everything in the eight artboards that was not
+already in the code is now written down in [design.md](../design.md) — the
+provenance of both old sites, the two rejected directions and why they lost, the
+tokens with their measured contrast, the type ramp, the grid, the map assets
+including the river's anchoring rule, the component inventory, the page
+compositions, the prohibitions, and what is still open.
+
+**The decision in this ADR is unchanged.** What changed is where the design
+lives: a markdown file next to voice.md, which is far easier to keep true than a
+2.5 MB generated canvas, and which reads as an input to a design agent if the
+port to React ever happens.
+
+The `*.dc.html` artboards and `canvas.json` are therefore removable. The
+published canvas at claude.ai is a separate artifact and is unaffected.

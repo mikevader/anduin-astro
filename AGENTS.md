@@ -7,6 +7,8 @@ agreement.
 Before writing anything about the subject matter, read [CONTEXT.md](CONTEXT.md).
 Before writing any prose that will be published, read
 [.agents/voice.md](.agents/voice.md).
+Before changing anything the site looks like, read
+[.agents/design.md](.agents/design.md).
 
 ## What this repo is
 
@@ -131,6 +133,7 @@ CONTEXT.md           # vocabulary, audience, homelab facts, redaction rules
 HARNESS-HANDOFF.md   # iteration plan and rationale
 .agents/
   voice.md           # samples and prohibitions
+  design.md          # tokens, type, grid, components, prohibitions
   adr/               # template.md, 0001-* .. 0008-*
 .claude/
   skills/            # grill, draft, review, redaction-check, source-trace
