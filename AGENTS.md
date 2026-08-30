@@ -1,8 +1,12 @@
 # AGENTS.md
 
 How an agent works in this repo. [HARNESS-HANDOFF.md](HARNESS-HANDOFF.md) holds the
-iteration plan and the reasoning behind all of this; this file is the working
-agreement.
+iteration plan; this file is the working agreement.
+
+**Where two documents disagree, the one that owns the subject wins** — the deciding
+ADR, then CONTEXT.md, voice.md and design.md for their own subjects. HARNESS-HANDOFF.md
+owns only the plan and loses every other conflict
+([ADR-0010](.agents/adr/0010-brief-not-authoritative.md)).
 
 Before writing anything about the subject matter, read [CONTEXT.md](CONTEXT.md).
 Before writing any prose that will be published, read
@@ -130,11 +134,11 @@ ask questions would fill gaps instead of refusing.
 AGENTS.md            # this file
 CLAUDE.md            # symlink -> AGENTS.md
 CONTEXT.md           # vocabulary, audience, homelab facts, redaction rules
-HARNESS-HANDOFF.md   # iteration plan and rationale
+HARNESS-HANDOFF.md   # iteration plan, and nothing else it owns
 .agents/
   voice.md           # samples and prohibitions
   design.md          # tokens, type, grid, components, prohibitions
-  adr/               # template.md, 0001-* .. 0008-*
+  adr/               # template.md, 0001-* .. 0010-*
 .claude/
   skills/            # grill, draft, review, redaction-check, source-trace
 pipeline/            # dumps, capture records, drafts - one file per topic

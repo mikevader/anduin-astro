@@ -1,17 +1,12 @@
 # Harness Handoff Brief
 
-Seed document for building an agent harness around a personal website/blog project.
-Drop this at the repo root, point Claude Code at it, and work through **Iteration 1 only**.
+The iteration plan for the harness. Where anything here disagrees with
+[CONTEXT.md](CONTEXT.md) or an ADR, they win — see
+[ADR-0010](.agents/adr/0010-brief-not-authoritative.md).
 
 ---
 
 ## 1. Project brief
-
-**The site**
-- Personal website: blog (tags + search) plus a separate projects page
-- Statically generated, internationalized, image optimization during the build
-- Content authored in Markdown
-- An older existing website needs to be migrated over
 
 **The harness**
 Built *before* the site, in iterations. Its jobs, in priority order:
@@ -21,11 +16,11 @@ Built *before* the site, in iterations. Its jobs, in priority order:
 2. Help build and maintain a professional site, including migrating the old one
 3. Produce diagrams and images that stay maintainable
 
-**Audience for the posts:** future me first, people with similar interests second.
-Assume Kubernetes/self-hosting literacy. Do not assume knowledge of my specific cluster.
-
 **Side goal:** understand how to build and use a harness, and be able to lift the generic
 parts into future projects.
+
+The site itself, its audience and its vocabulary are defined in
+[CONTEXT.md](CONTEXT.md), not here.
 
 ---
 
