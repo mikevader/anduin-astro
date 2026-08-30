@@ -1,0 +1,529 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <style>
+    body { margin: 0; }
+    a { color: #b94834; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+    a:hover { color: #972815; }
+  </style>
+</helmet>
+
+<div style="width: 1280px; min-height: 6800px; background: #f9f6f1; color: #2f2924; font-family: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif; -webkit-font-smoothing: antialiased;">
+
+  <!-- masthead -->
+  <div style="border-bottom: 1px solid #c4bcb3;">
+    <div style="display: flex; align-items: center; justify-content: space-between; height: 108px; padding: 0 64px 0 96px;">
+      <div style="font-size: 27px; font-weight: 500; letter-spacing: -0.01em;">anduin<span style="color: #409d48;">.ch</span></div>
+      <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #736a63;">Design system · v1</div>
+    </div>
+    <div style="height: 96px; overflow: hidden;">
+      <svg width="1280" height="96" viewBox="0 36 1280 96" fill="none" style="display: block;">
+        <g stroke="#2f2924" stroke-width="1" opacity="0.115">
+          <path d="M 144 58 C 184 52, 218 72, 218 100 C 218 130, 184 146, 146 142 C 112 138, 94 112, 104 86 C 112 68, 124 61, 144 58 Z"></path>
+          <path d="M 134 40 C 190 32, 238 60, 238 100 C 238 142, 190 164, 138 158 C 92 152, 66 118, 80 82 C 92 54, 108 44, 134 40 Z"></path>
+          <path d="M 122 20 C 196 10, 260 48, 258 100 C 256 156, 194 184, 128 176 C 70 168, 36 124, 54 76 C 70 38, 92 24, 122 20 Z"></path>
+          <path d="M 108 -6 C 204 -18, 284 34, 280 102 C 276 174, 200 208, 116 198 C 44 190, 4 132, 26 70 C 46 20, 74 -2, 108 -6 Z"></path>
+          <path d="M 356 104 C 470 98, 590 114, 706 102 C 812 92, 872 106, 930 98"></path>
+          <path d="M 344 130 C 462 122, 582 140, 702 128 C 820 116, 880 134, 940 126"></path>
+          <path d="M 1068 -28 C 1104 -28, 1126 28, 1124 90 C 1122 156, 1100 198, 1064 196 C 1030 194, 1012 136, 1018 74 C 1024 12, 1038 -28, 1068 -28 Z"></path>
+          <path d="M 1062 -64 C 1112 -64, 1142 12, 1140 92 C 1138 178, 1108 234, 1058 230 C 1012 226, 988 150, 996 66 C 1004 -16, 1024 -64, 1062 -64 Z"></path>
+          <path d="M 1054 -100 C 1120 -100, 1158 -4, 1156 94 C 1154 200, 1116 268, 1050 264 C 990 260, 962 164, 972 58 C 982 -44, 1010 -100, 1054 -100 Z"></path>
+          <path d="M 936 62 C 964 68, 984 78, 996 84 C 984 90, 964 100, 936 106"></path>
+          <path d="M 922 48 C 958 57, 986 72, 1004 84 C 986 96, 958 111, 922 120"></path>
+        </g>
+        <path d="M 250 -12 C 252 24, 268 44, 272 74 C 276 104, 300 118, 306 140 C 312 158, 320 166, 324 180" stroke="#fde1db" stroke-width="7" stroke-linecap="round"></path>
+        <path d="M 250 -12 C 252 24, 268 44, 272 74 C 276 104, 300 118, 306 140 C 312 158, 320 166, 324 180" stroke="#d15e49" stroke-width="2.2" stroke-linecap="round"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- title -->
+  <div style="padding: 56px 64px 0 96px;">
+    <h1 style="margin: 0; max-width: 900px; font-size: 46px; line-height: 1.14; font-weight: 400; letter-spacing: -0.018em;">The system</h1>
+    <p style="margin: 20px 0 0 0; max-width: 660px; font-size: 19px; line-height: 1.72; color: #736a63; text-wrap: pretty;">Every value the five page drawings actually use, written down so they stop being incidental. Where a drawing drifts off the scale it is marked rather than quietly corrected.</p>
+    <div style="height: 1px; background: #ded8d0; margin-top: 40px;"></div>
+  </div>
+
+  <!-- COLOUR -->
+  <div style="padding: 56px 64px 0 96px;">
+    <div style="display: flex; align-items: baseline; gap: 24px;">
+      <h2 style="margin: 0; font-size: 30px; font-weight: 400; letter-spacing: -0.014em;">Colour</h2>
+      <span style="flex-grow: 1; height: 1px; background: #c4bcb3;"></span>
+      <span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">12 tokens · contrast vs. paper</span>
+    </div>
+    <p style="margin: 18px 0 0 0; max-width: 660px; font-size: 17px; line-height: 1.62; color: #736a63; text-wrap: pretty;">Both accents sit at the same lightness and chroma in oklch and differ only in hue — coral is the river from the 2004 site, moss is the <code style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: #f2eee7; padding: 1px 4px;">#af2</code> accent and the green in the 2005 logo.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 32px;">
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #f9f6f1; border: 1px solid #ded8d0;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">paper</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#f9f6f1<br>oklch(.975 .008 85)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Page ground everywhere.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #fffdfa; border: 1px solid #ded8d0;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">panel</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#fffdfa<br>oklch(.995 .004 85)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Raised surfaces. Only the search field so far.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #f2eee7; border: 1px solid #ded8d0;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">code</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#f2eee7<br>oklch(.951 .011 85)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Code blocks and inline code.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #ded8d0;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">rule</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#ded8d0<br>oklch(.885 .013 75)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Hairlines inside a section: list separators, code borders.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #c4bcb3;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">rule-strong</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#c4bcb3<br>oklch(.800 .016 75)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Structural edges: masthead, footer, legend squares, slot borders.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #736a63;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">muted</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#736a63 · 4.91:1<br>oklch(.530 .016 60)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">All secondary text: dates, tags, excerpts, labels, captions, YAML comments.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #2f2924;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">ink</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#2f2924 · 13.31:1<br>oklch(.285 .013 60)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Body copy, titles, code.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #b94834;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">link</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#b94834 · 4.82:1<br>oklch(.550 .150 32)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Inline links, drop cap. 4.50:1 on the code ground — the floor.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #972815;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">link-hover</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#972815 · 7.41:1<br>oklch(.450 .150 32)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">Hover only.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #d15e49;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">river</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#d15e49 · 3.60:1<br>oklch(.620 .150 32)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;"><strong style="font-weight: 600; color: #2f2924;">Never text.</strong> The river stroke and the filled active-tag square.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #fde1db;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">bank</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#fde1db<br>oklch(.930 .032 32)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;">The river's pale bank, and search-match highlight. Ink on it is 11.60:1.</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="height: 56px; background: #409d48;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #2f2924;">moss</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">#409d48 · 3.18:1<br>oklch(.620 .150 145)</div>
+        <div style="font-size: 15px; line-height: 1.5; color: #736a63;"><strong style="font-weight: 600; color: #2f2924;">Large text and graphics only.</strong> The <code style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: #f2eee7; padding: 1px 4px;">.ch</code> at 27px, and the current-nav underline.</div>
+      </div>
+
+    </div>
+
+    <div style="max-width: 900px; margin-top: 32px; padding: 20px 24px; background: #f2eee7; border: 1px solid #ded8d0; border-radius: 2px;">
+      <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Fixed while writing this</div>
+      <p style="margin: 10px 0 0 0; font-size: 17px; line-height: 1.62; color: #2f2924; text-wrap: pretty;">A third grey, <code style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: #f9f6f1; padding: 1px 4px;">#a89e95</code>, was carrying the rail labels, the code captions and the YAML comments at 2.44:1 — well under AA. It is gone; all of that is <code style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: #f9f6f1; padding: 1px 4px;">muted</code> now. Two greys for text, not three: the hierarchy comes from size, tracking and case.</p>
+    </div>
+  </div>
+
+  <!-- TYPE -->
+  <div style="padding: 64px 64px 0 96px;">
+    <div style="display: flex; align-items: baseline; gap: 24px;">
+      <h2 style="margin: 0; font-size: 30px; font-weight: 400; letter-spacing: -0.014em;">Type</h2>
+      <span style="flex-grow: 1; height: 1px; background: #c4bcb3;"></span>
+      <span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">2 families · desktop ramp</span>
+    </div>
+    <p style="margin: 18px 0 0 0; max-width: 660px; font-size: 17px; line-height: 1.62; color: #736a63; text-wrap: pretty;"><strong style="font-weight: 600; color: #2f2924;">Newsreader</strong> carries prose, <strong style="font-weight: 600; color: #2f2924;">IBM Plex Mono</strong> carries every piece of structure. That split is the whole idea: notebook chrome, cartographic body. Export cannot embed webfonts, so both fallbacks are metric-close — <code style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: #f2eee7; padding: 1px 4px;">Iowan Old Style, Palatino, Georgia</code> and <code style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: #f2eee7; padding: 1px 4px;">ui-monospace, SFMono-Regular, Menlo</code>.</p>
+
+    <div style="display: flex; flex-direction: column; gap: 0; margin-top: 32px;">
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">page title<br>46 / 1.14 / 400 / −.018em</div>
+        <div style="font-size: 46px; line-height: 1.14; font-weight: 400; letter-spacing: -0.018em;">AirPrint server with Ansible</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">identity title<br>42 / 1.14 / 400 / −.018em</div>
+        <div style="font-size: 42px; line-height: 1.14; font-weight: 400; letter-spacing: -0.018em;">Michael Muehlebach</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">list title<br>27 / 1.24 / 400 / −.012em</div>
+        <div style="font-size: 27px; line-height: 1.24; font-weight: 400; letter-spacing: -0.012em;">SWT Sashes with minimal size</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">section title<br>30 / 1.2 / 400 / −.014em</div>
+        <div style="font-size: 30px; line-height: 1.2; font-weight: 400; letter-spacing: -0.014em;">Components</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">body<br>19 / 1.72 / 400<br>measure 660px</div>
+        <div style="max-width: 660px; font-size: 19px; line-height: 1.72;">The role installs the packages, puts the admin user into the lpadmin group and pushes my own cupsd.conf.</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">excerpt<br>17 / 1.62 / 400 / muted</div>
+        <div style="max-width: 680px; font-size: 17px; line-height: 1.62; color: #736a63;">A cool feature of SWT are sashes. They are ideal for creating flexible editors and views.</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: center; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">drop cap<br>62 / 0.82 / link<br>opens the post only</div>
+        <div style="max-width: 660px; font-size: 19px; line-height: 1.72;"><span style="float: left; font-size: 62px; line-height: 0.82; padding: 6px 14px 0 0; color: #b94834;">I</span> wanted to make my printer available over AirPrint without buying a new one. CUPS and Avahi do the work.</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">logo<br>27 / 500 / −.01em</div>
+        <div style="font-size: 27px; font-weight: 500; letter-spacing: -0.01em;">anduin<span style="color: #409d48;">.ch</span></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">nav<br>mono 12 / .1em / upper</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">blog · projects · search</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">eyebrow &amp; date<br>mono 12 / .11em / upper / muted</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.11em; text-transform: uppercase; color: #736a63;">2026 · 08 · 28</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">rail label &amp; caption<br>mono 11 / .13em / upper / muted</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Filed under</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">rail item<br>mono 13</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px;">ansible</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">code<br>mono 14 / 1.62<br>inline: 0.86em of parent</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; line-height: 1.62;">- name: Install prerequisite software</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: baseline; padding: 20px 0; border-top: 1px solid #ded8d0; border-bottom: 1px solid #ded8d0;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">footer &amp; meta<br>mono 12 / 1.7 / muted</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.7; color: #736a63;">Michael Muehlebach · mikevader</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div style="padding: 64px 64px 0 96px;">
+    <div style="display: flex; align-items: baseline; gap: 24px;">
+      <h2 style="margin: 0; font-size: 30px; font-weight: 400; letter-spacing: -0.014em;">Grid</h2>
+      <span style="flex-grow: 1; height: 1px; background: #c4bcb3;"></span>
+      <span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">1280 canvas</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 168px 56px 832px; gap: 0 32px; margin-top: 32px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="height: 72px; background: #f2eee7; border: 1px solid #ded8d0;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">rail 168<br>tags, byline</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="height: 72px; background: #fde1db; border: 1px solid #ded8d0;"></div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">river 56</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: grid; grid-template-columns: 660px 1fr; gap: 0; height: 72px;">
+          <div style="background: #f2eee7; border: 1px solid #ded8d0;"></div>
+          <div style="border: 1px dashed #c4bcb3; border-left: none;"></div>
+        </div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; line-height: 1.5; color: #736a63;">body 832 — prose is held to a 660 measure, code blocks take the full width</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 36px; max-width: 1000px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Page padding</div>
+        <div style="font-size: 17px; line-height: 1.6; color: #2f2924;">96 left, 64 right. The asymmetry is deliberate — the rail wants the wider margin.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Spacing scale</div>
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; line-height: 1.7; color: #2f2924;">4 · 8 · 12 · 18 · 24 · 32 · 44 · 60 · 96</div>
+        <div style="font-size: 15px; line-height: 1.55; color: #736a63;">The drawings also use 9, 10, 14, 26, 28, 30, 34, 36, 56 and 72. Normalise at build.</div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Radius</div>
+        <div style="font-size: 17px; line-height: 1.6; color: #2f2924;">2px, on code blocks and the search field. Nothing else is rounded.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div style="padding: 64px 64px 0 96px;">
+    <div style="display: flex; align-items: baseline; gap: 24px;">
+      <h2 style="margin: 0; font-size: 30px; font-weight: 400; letter-spacing: -0.014em;">Components</h2>
+      <span style="flex-grow: 1; height: 1px; background: #c4bcb3;"></span>
+      <span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">8</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 40px; margin-top: 32px;">
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">nav item<br>current state carries a 2px moss underline; 3px gap above it</div>
+        <div style="display: flex; align-items: center; gap: 34px; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;">
+          <div style="color: #2f2924; padding-bottom: 3px; border-bottom: 2px solid #409d48;">blog</div>
+          <div style="color: #736a63; padding-bottom: 3px; border-bottom: 2px solid transparent;">projects</div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">tag — a map legend key<br>8px square (7px inline), 10px gap<br>active: filled river, ink label</div>
+        <div style="display: flex; align-items: center; gap: 28px; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; color: #736a63;">
+          <div style="display: flex; align-items: center; gap: 10px;"><span style="width: 8px; height: 8px; border: 1px solid #c4bcb3;"></span><span>ansible</span></div>
+          <div style="display: flex; align-items: center; gap: 10px; color: #2f2924;"><span style="width: 8px; height: 8px; background: #d15e49; border: 1px solid #d15e49;"></span><span>swt</span></div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">post list entry<br>date, title, real first sentence, tags<br>30px gap, hairline separator</div>
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 30px; border-bottom: 1px solid #ded8d0;">
+          <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.11em; color: #736a63;">2011 · 03 · 30</div>
+          <h3 style="margin: 0; font-size: 27px; line-height: 1.24; font-weight: 400; letter-spacing: -0.012em;">SWT Sashes with minimal size</h3>
+          <p style="margin: 0; max-width: 680px; font-size: 17px; line-height: 1.62; color: #736a63;">A cool feature of SWT are sashes. They are ideal for creating flexible editors and views.</p>
+          <div style="display: flex; gap: 18px; margin-top: 4px; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: #736a63;">
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border: 1px solid #c4bcb3;"></span><span>swt</span></div>
+            <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 7px; height: 7px; border: 1px solid #c4bcb3;"></span><span>java</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">code block<br>caption names the file, language sits right<br>24/26 padding, 2px radius<br>lines wrap, never scroll</div>
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; color: #736a63;">
+            <span>roles/airprint_server/tasks/main.yaml</span>
+            <span>yaml</span>
+          </div>
+          <pre style="margin: 0; padding: 24px 26px; background: #f2eee7; border: 1px solid #ded8d0; border-radius: 2px; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 14px; line-height: 1.62; white-space: pre-wrap; overflow-wrap: break-word;">- name: Install prerequisite software
+  apt:
+    name:
+      - avahi-daemon
+<span style="color: #736a63;">#      - python-cups</span></pre>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">search field<br>58px tall, panel ground<br>river-coloured caret</div>
+        <div style="display: flex; align-items: center; gap: 14px; max-width: 600px; height: 58px; padding: 0 20px; background: #fffdfa; border: 1px solid #c4bcb3; border-radius: 2px;">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#736a63" stroke-width="1.6" stroke-linecap="round" style="flex-shrink: 0;">
+            <circle cx="8.5" cy="8.5" r="5.5"></circle>
+            <path d="M 12.6 12.6 L 17 17"></path>
+          </svg>
+          <span style="flex-grow: 1; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px;">swt</span>
+          <span style="width: 1px; height: 20px; background: #d15e49;"></span>
+          <span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; color: #736a63;">clear</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">placeholder slot<br>dashed rule-strong, mono, bracketed<br>never shipped filled with a guess</div>
+        <div style="max-width: 660px; padding: 12px 16px; border: 1px dashed #c4bcb3; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; line-height: 1.6; color: #736a63;">[ STANDFIRST — one sentence saying what this site is. Not written yet. ]</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">inline run<br>link, inline code, search match</div>
+        <div style="max-width: 660px; font-size: 19px; line-height: 1.72;">There is a role on Ansible Galaxy for exactly this, <a href="https://galaxy.ansible.com/nerab/airprint-server"><code style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: #f2eee7; padding: 1px 4px;">nerab/airprint-server</code></a>, and a <mark style="background: #fde1db; color: #2f2924; padding: 0 2px;">match</mark> looks like that.</div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">rules<br>strong for structure, hairline within, dashed for an empty slot</div>
+        <div style="display: flex; flex-direction: column; gap: 18px; max-width: 600px;">
+          <div style="display: flex; align-items: center; gap: 20px;"><span style="width: 300px; height: 1px; background: #c4bcb3;"></span><span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: #736a63;">rule-strong</span></div>
+          <div style="display: flex; align-items: center; gap: 20px;"><span style="width: 300px; height: 1px; background: #ded8d0;"></span><span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: #736a63;">rule</span></div>
+          <div style="display: flex; align-items: center; gap: 20px;"><span style="width: 300px; border-top: 1px dashed #c4bcb3;"></span><span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: #736a63;">dashed</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAP ASSETS -->
+  <div style="padding: 64px 64px 0 96px;">
+    <div style="display: flex; align-items: baseline; gap: 24px;">
+      <h2 style="margin: 0; font-size: 30px; font-weight: 400; letter-spacing: -0.014em;">Map assets</h2>
+      <span style="flex-grow: 1; height: 1px; background: #c4bcb3;"></span>
+      <span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">drawn, not traced</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; margin-top: 32px; align-items: start;">
+      <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">the river<br>2.2px river over a 7px bank<br>amplitude ±13 about the column centre<br>label: Newsreader italic 15 / 3.2 tracking / link at 62%<br>repeats every ~1100px of path<br>mobile: 2px over 6px, ±3, no label</div>
+      <div style="display: flex; align-items: flex-start; gap: 40px;">
+        <svg width="56" height="300" viewBox="0 0 56 300" fill="none" style="display: block; overflow: visible;">
+          <path d="M 28 8 C 28 52, 15 84, 17 128 C 19 176, 40 202, 42 248 C 43 274, 30 286, 28 296" stroke="#fde1db" stroke-width="7" stroke-linecap="round"></path>
+          <path id="river-spec" d="M 28 8 C 28 52, 15 84, 17 128 C 19 176, 40 202, 42 248 C 43 274, 30 286, 28 296" stroke="#d15e49" stroke-width="2.2" stroke-linecap="round"></path>
+          <text font-family="Newsreader, 'Iowan Old Style', Palatino, Georgia, serif" font-style="italic" font-size="15" letter-spacing="3.2" fill="#b94834" fill-opacity="0.62">
+            <textPath href="#river-spec" startOffset="60">anduin</textPath>
+          </text>
+        </svg>
+        <p style="margin: 0; max-width: 560px; font-size: 17px; line-height: 1.62; color: #736a63; text-wrap: pretty;">It runs the length of every page: out of the mountains in the masthead, down the left gutter on the article axis, off the bottom edge below the footer. Both old sites drew the Anduin as a coloured line across a map — in 2004 coral, in 2005 blue with its name set along it. This is that, doing a job.</p>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; margin-top: 44px; align-items: start;">
+      <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; color: #736a63;">the terrain<br>ink contour at 11.5% (masthead), 9% (footer)<br>1px stroke, no fill<br>masthead 168 tall, footer 150, mobile 130</div>
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="height: 168px; border: 1px solid #ded8d0; overflow: hidden;">
+          <svg width="1000" height="168" viewBox="0 0 1280 168" fill="none" style="display: block;">
+            <g stroke="#2f2924" stroke-width="1" opacity="0.115">
+              <path d="M 160 88 C 176 86, 186 94, 184 104 C 182 114, 168 118, 156 114 C 146 110, 144 96, 152 90 Z"></path>
+              <path d="M 152 74 C 180 70, 202 84, 200 102 C 198 122, 174 132, 150 128 C 128 124, 118 104, 126 88 C 132 78, 140 76, 152 74 Z"></path>
+              <path d="M 144 58 C 184 52, 218 72, 218 100 C 218 130, 184 146, 146 142 C 112 138, 94 112, 104 86 C 112 68, 124 61, 144 58 Z"></path>
+              <path d="M 134 40 C 190 32, 238 60, 238 100 C 238 142, 190 164, 138 158 C 92 152, 66 118, 80 82 C 92 54, 108 44, 134 40 Z"></path>
+              <path d="M 122 20 C 196 10, 260 48, 258 100 C 256 156, 194 184, 128 176 C 70 168, 36 124, 54 76 C 70 38, 92 24, 122 20 Z"></path>
+              <path d="M 108 -6 C 204 -18, 284 34, 280 102 C 276 174, 200 208, 116 198 C 44 190, 4 132, 26 70 C 46 20, 74 -2, 108 -6 Z"></path>
+              <path d="M 296 112 C 308 110, 314 117, 312 124 C 310 131, 298 133, 291 128 C 287 124, 289 114, 296 112 Z"></path>
+              <path d="M 292 102 C 314 99, 326 112, 322 126 C 318 140, 296 144, 283 136 C 274 130, 277 108, 292 102 Z"></path>
+              <path d="M 356 104 C 470 98, 590 114, 706 102 C 812 92, 872 106, 930 98"></path>
+              <path d="M 344 130 C 462 122, 582 140, 702 128 C 820 116, 880 134, 940 126"></path>
+              <path d="M 350 156 C 468 148, 588 166, 708 154 C 828 142, 888 160, 948 152"></path>
+              <path d="M 1076 40 C 1090 40, 1096 60, 1094 84 C 1092 110, 1084 128, 1072 128 C 1060 128, 1054 108, 1056 84 C 1058 58, 1064 40, 1076 40 Z"></path>
+              <path d="M 1072 8 C 1096 8, 1110 44, 1108 88 C 1106 134, 1092 164, 1068 162 C 1046 160, 1034 122, 1038 80 C 1042 36, 1052 8, 1072 8 Z"></path>
+              <path d="M 1068 -28 C 1104 -28, 1126 28, 1124 90 C 1122 156, 1100 198, 1064 196 C 1030 194, 1012 136, 1018 74 C 1024 12, 1038 -28, 1068 -28 Z"></path>
+              <path d="M 1062 -64 C 1112 -64, 1142 12, 1140 92 C 1138 178, 1108 234, 1058 230 C 1012 226, 988 150, 996 66 C 1004 -16, 1024 -64, 1062 -64 Z"></path>
+              <path d="M 1054 -100 C 1120 -100, 1158 -4, 1156 94 C 1154 200, 1116 268, 1050 264 C 990 260, 962 164, 972 58 C 982 -44, 1010 -100, 1054 -100 Z"></path>
+              <path d="M 936 62 C 964 68, 984 78, 996 84 C 984 90, 964 100, 936 106"></path>
+              <path d="M 922 48 C 958 57, 986 72, 1004 84 C 986 96, 958 111, 922 120"></path>
+              <path d="M 1240 10 C 1266 6, 1284 24, 1282 48 C 1280 74, 1258 86, 1238 80 C 1222 74, 1218 40, 1230 22 Z"></path>
+              <path d="M 1234 -14 C 1272 -20, 1298 8, 1296 48 C 1294 88, 1262 106, 1232 96 C 1208 88, 1204 12, 1234 -14 Z"></path>
+            </g>
+            <path d="M 250 -12 C 252 24, 268 44, 272 74 C 276 104, 300 118, 306 140 C 312 158, 320 166, 324 180" stroke="#fde1db" stroke-width="7" stroke-linecap="round"></path>
+            <path d="M 250 -12 C 252 24, 268 44, 272 74 C 276 104, 300 118, 306 140 C 312 158, 320 166, 324 180" stroke="#d15e49" stroke-width="2.2" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <p style="margin: 0; max-width: 780px; font-size: 17px; line-height: 1.62; color: #736a63; text-wrap: pretty;">Read west to east: a massif with a spur running off it, the plain, the river crossing, rising ground, then a range running north–south off both edges with a valley cutting west into it — contours pointing upstream, which is how a map draws one. Same profile as the ground between Minas Tirith and Minas Morgul. Nothing is traced from Tolkien&#39;s map and no place names appear on it.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BREAKPOINTS -->
+  <div style="padding: 64px 64px 0 96px;">
+    <div style="display: flex; align-items: baseline; gap: 24px;">
+      <h2 style="margin: 0; font-size: 30px; font-weight: 400; letter-spacing: -0.014em;">Breakpoints</h2>
+      <span style="flex-grow: 1; height: 1px; background: #c4bcb3;"></span>
+      <span style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">2 drawn</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 200px 1fr 1fr; gap: 0 32px; margin-top: 28px; max-width: 1000px; font-size: 17px; line-height: 1.6;">
+      <div style="padding: 14px 0; border-bottom: 1px solid #c4bcb3; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">&nbsp;</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #c4bcb3; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Desktop 1280</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #c4bcb3; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Mobile 390</div>
+
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0; color: #736a63;">Page padding</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">96 / 64</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">18 / 18</div>
+
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0; color: #736a63;">Columns</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">168 / 56 / 832, gap 32</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">10 / 330, gap 14</div>
+
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0; color: #736a63;">Metadata</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">Rail beside the text</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">Strip under the title</div>
+
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0; color: #736a63;">Masthead</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">108 nav + 168 terrain</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">60 nav + 130 terrain, redrawn</div>
+
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0; color: #736a63;">Body / code</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">19 / 1.72 · code 14</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">17 / 1.7 · code 12</div>
+
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0; color: #736a63;">Hit targets</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">—</div>
+      <div style="padding: 14px 0; border-bottom: 1px solid #ded8d0;">44 minimum</div>
+    </div>
+
+    <div style="max-width: 900px; margin-top: 36px; padding: 20px 24px; border: 1px dashed #c4bcb3;">
+      <div style="font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: #736a63;">Open for implementation</div>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 12px; font-size: 17px; line-height: 1.62; color: #2f2924;">
+        <div>The masthead collapsing on scroll — no state drawn for it. It needs a height, what the terrain does, and whether the logo shrinks.</div>
+        <div>A denser terrain, and how its crop is derived per breakpoint rather than redrawn by hand.</div>
+        <div>The tablet width between 390 and 1280, where the rail has to go somewhere.</div>
+        <div>Long YAML lines wrap rather than scroll. Deliberate — nothing hides from a reader five years out — but it is the ugliest thing in the system and worth a second look.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="padding: 72px 64px 0 96px;">
+    <div style="height: 1px; background: #c4bcb3;"></div>
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 48px; padding-top: 26px; font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.7; color: #736a63;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="color: #2f2924;">Michael Muehlebach</div>
+        <div style="display: flex; align-items: center; gap: 7px;">
+          <a href="https://github.com/mikevader">mikevader</a>
+          <svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="#b94834" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 7 4 L 16 4 L 16 13"></path>
+            <path d="M 16 4 L 4 16"></path>
+          </svg>
+        </div>
+      </div>
+      <div style="display: flex; gap: 34px; letter-spacing: 0.1em; text-transform: uppercase;">
+        <div>blog</div>
+        <div>projects</div>
+        <div>feed</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height: 150px; margin-top: 44px; overflow: hidden;">
+    <svg width="1280" height="150" viewBox="0 0 1280 150" fill="none" style="display: block;">
+      <g stroke="#2f2924" stroke-width="1" opacity="0.09">
+        <path d="M 0 44 C 180 36, 360 54, 540 44 C 720 34, 900 52, 1080 42 C 1180 36, 1240 42, 1280 38"></path>
+        <path d="M 0 74 C 180 67, 360 85, 540 74 C 720 63, 900 82, 1080 71 C 1180 65, 1240 72, 1280 67"></path>
+        <path d="M 0 106 C 180 100, 360 118, 540 106 C 720 94, 900 114, 1080 102 C 1180 96, 1240 104, 1280 98"></path>
+        <path d="M 0 136 C 180 131, 360 149, 540 137 C 720 125, 900 146, 1080 133 C 1180 127, 1240 136, 1280 129"></path>
+        <g transform="rotate(-12 700 60)">
+          <ellipse cx="700" cy="60" rx="26" ry="13"></ellipse>
+          <ellipse cx="696" cy="63" rx="52" ry="26"></ellipse>
+          <ellipse cx="691" cy="66" rx="82" ry="40"></ellipse>
+          <ellipse cx="685" cy="70" rx="116" ry="56"></ellipse>
+        </g>
+        <g transform="rotate(8 1060 40)">
+          <ellipse cx="1060" cy="40" rx="22" ry="11"></ellipse>
+          <ellipse cx="1064" cy="43" rx="46" ry="23"></ellipse>
+          <ellipse cx="1069" cy="47" rx="74" ry="37"></ellipse>
+        </g>
+      </g>
+      <path d="M 324 -12 C 326 18, 314 42, 316 70 C 318 98, 332 118, 336 150" stroke="#fde1db" stroke-width="7" stroke-linecap="round"></path>
+      <path d="M 324 -12 C 326 18, 314 42, 316 70 C 318 98, 332 118, 336 150" stroke="#d15e49" stroke-width="2.2" stroke-linecap="round"></path>
+    </svg>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

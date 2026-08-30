@@ -1,2 +1,6 @@
 .DS_Store
 scratch/
+
+# Generated design canvas. Rebuilt from the .dc.html artboards + canvas.json;
+# 2.5 MB of it is the editor, which does not belong in history.
+anduin-ch-website.html

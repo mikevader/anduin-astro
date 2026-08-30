@@ -1,0 +1,70 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "Site" },
+    { "id": "page-3", "name": "System" },
+    { "id": "page-2", "name": "Directions" }
+  ],
+  "artboards": [
+    { "file": "Index.dc.html", "title": "Home / blog index", "page": "page-1", "x": 0, "y": 0, "w": 1280, "h": 2300 },
+    { "file": "Main.dc.html", "title": "Post page", "page": "page-1", "x": 1400, "y": 0, "w": 1280, "h": 3400 },
+    { "file": "Browse.dc.html", "title": "Search / tags", "page": "page-1", "x": 2800, "y": 0, "w": 1280, "h": 1540 },
+    { "file": "Projects.dc.html", "title": "Projects page", "page": "page-1", "x": 4200, "y": 0, "w": 1280, "h": 1640 },
+    { "file": "Mobile.dc.html", "title": "Post page — mobile", "page": "page-1", "x": 5600, "y": 0, "w": 390, "h": 3280 },
+
+    { "file": "System.dc.html", "title": "The system", "page": "page-3", "x": 0, "y": 0, "w": 1280, "h": 6800 },
+
+    { "file": "Restrained.dc.html", "title": "Post page — Restrained", "page": "page-2", "x": 0, "y": 0, "w": 1280, "h": 3200 },
+    { "file": "Cartographic.dc.html", "title": "Post page — Cartographic", "page": "page-2", "x": 1400, "y": 0, "w": 1280, "h": 3280 }
+  ],
+  "annotations": [
+    {
+      "id": "site-note",
+      "page": "page-1",
+      "x": 0,
+      "y": -320,
+      "w": 400,
+      "text": "Every page in the chosen system. The river runs the length of each one: it comes out of the mountains in the masthead, down the left gutter, and off the bottom edge below the footer.\n\nPost titles, dates and excerpts are the real ones — the five posts quoted in voice.md plus the finished AirPrint post. The standfirst is bracketed because it has not been written."
+    },
+    {
+      "id": "browse-note",
+      "page": "page-1",
+      "x": 2800,
+      "y": -320,
+      "w": 380,
+      "text": "The query \"swt\" and its two hits are a worked example, not fixed copy — those two posts really are the SWT ones. Coral marks the active tag and the matched words."
+    },
+    {
+      "id": "projects-note",
+      "page": "page-1",
+      "x": 4200,
+      "y": -320,
+      "w": 380,
+      "text": "Structure only. Every bracketed slot is a placeholder — CONTEXT.md says the projects page has no content, priority or structure decided yet, so none was invented. The three candidate names are the ones CONTEXT.md already lists."
+    },
+    {
+      "id": "mobile-note",
+      "page": "page-1",
+      "x": 5600,
+      "y": -320,
+      "w": 380,
+      "text": "390 wide. The metadata rail collapses into a strip under the title, the river thins to 2px against the left edge and drops its label, and the terrain is redrawn rather than scaled — the massif moves right so the river still exits low and left.\n\nNo painted status bar: the real one renders on top."
+    },
+    {
+      "id": "system-note",
+      "page": "page-3",
+      "x": -440,
+      "y": 0,
+      "w": 400,
+      "text": "Every value the five page drawings actually use, written down and drawn in the system it describes.\n\nWriting it turned up one real defect: a third grey carried the rail labels, code captions and YAML comments at 2.44:1, well under AA. It is gone from all five pages — that text is muted now, and the hierarchy comes from size, tracking and case instead.\n\nThe last block lists what is still open, including the collapsing masthead."
+    },
+    {
+      "id": "directions-note",
+      "page": "page-2",
+      "x": 0,
+      "y": -320,
+      "w": 400,
+      "text": "The two directions that were not taken, kept for reference. Restrained treated the map as a hint; Cartographic pushed it to a framed map strip with settlements and a compass rose. The shipped system takes Restrained's palette, layout and metadata rail plus Cartographic's terrain, named river and drop cap."
+    }
+  ],
+  "launch": { "view": "canvas", "page": "page-3" }
+}
