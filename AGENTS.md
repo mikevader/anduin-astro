@@ -131,7 +131,7 @@ CONTEXT.md           # vocabulary, audience, homelab facts, redaction rules
 HARNESS-HANDOFF.md   # iteration plan and rationale
 .agents/
   voice.md           # samples and prohibitions
-  adr/               # template.md, 0001-* .. 0007-*
+  adr/               # template.md, 0001-* .. 0008-*
 .claude/
   skills/            # grill, draft, review, redaction-check, source-trace
 pipeline/            # dumps, capture records, drafts - one file per topic
