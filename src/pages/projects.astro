@@ -1,0 +1,51 @@
+---
+import Page from '../layouts/Page.astro';
+import PlaceholderSlot from '../components/PlaceholderSlot.astro';
+import River from '../components/River.astro';
+
+/**
+ * Structure only. CONTEXT.md: "No priority, no structure, no copy yet. Do not
+ * invent one." The three names below are the candidates CONTEXT.md already
+ * lists; everything else is a bracketed slot.
+ */
+const candidates = ['word clock', '3D work', 'the cluster'];
+---
+<Page title="Projects — anduin.ch" current="projects">
+  <div class="wrap" style="padding-top: 60px">
+    <span class="label">Index</span>
+    <h1 style="margin-top: var(--s-4)">Projects</h1>
+    <div style="max-width: var(--measure); margin-top: var(--s-5)">
+      <PlaceholderSlot>[ INTRO — one or two sentences saying what belongs on this page. Not written yet. ]</PlaceholderSlot>
+    </div>
+    <div class="rule" style="margin-top: var(--s-7)"></div>
+  </div>
+
+  <div class="wrap grid">
+    <div class="rail">
+      <div class="rail__group">
+        <span class="label">Filter</span>
+        <div class="tags tags--stacked">
+          {[0, 1, 2].map(() => (
+            <span class="tag"><span class="tag__swatch"></span><span>[ TAG ]</span></span>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="river-col"><River anchor="bottom" /></div>
+    <div class="body-col">
+      {candidates.map((name) => (
+        <div class="slot breakout" style="display: flex; flex-direction: column; gap: 14px; padding: var(--s-5) 26px">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-5)">
+            <span style="font-family: var(--font-prose); font-size: 22px; color: var(--ink)">[ CANDIDATE — {name} ]</span>
+            <span class="label" style="white-space: nowrap">[ STATUS ]</span>
+          </div>
+          <div>[ ONE LINE — WHAT IT IS AND WHY IT EXISTS ]</div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); font-size: var(--size-meta)">
+            <span style="display: flex; gap: 16px"><span>[ TAG ]</span><span>[ TAG ]</span></span>
+            <span>[ LINK ]</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Page>

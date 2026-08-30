@@ -1,0 +1,45 @@
+---
+import Page from '../layouts/Page.astro';
+import PostCard from '../components/PostCard.astro';
+import PlaceholderSlot from '../components/PlaceholderSlot.astro';
+import River from '../components/River.astro';
+import Tag from '../components/Tag.astro';
+import { getCollection } from 'astro:content';
+import { TAGS } from '../content.config';
+
+const posts = (
+  await getCollection('posts', ({ data }) => (import.meta.env.PROD ? !data.draft : true))
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const used = new Set(posts.flatMap((p) => p.data.tags));
+const tags = TAGS.filter((t) => used.has(t));
+---
+<Page title="anduin.ch" current="blog">
+  <div class="wrap" style="padding-top: 60px">
+    <h1 style="font-size: var(--size-identity)">Michael Muehlebach</h1>
+    <div class="meta" style="margin-top: 14px; letter-spacing: 0">
+      <a href="https://github.com/mikevader">mikevader</a>
+    </div>
+    <div style="max-width: var(--measure); margin-top: 26px">
+      <PlaceholderSlot>[ STANDFIRST — one sentence saying what this site is. Not written yet. ]</PlaceholderSlot>
+    </div>
+    <div class="rule" style="margin-top: var(--s-7)"></div>
+  </div>
+
+  <div class="wrap grid">
+    <div class="rail">
+      <div class="rail__group">
+        <span class="label">Tags</span>
+        <div class="tags tags--stacked">
+          {tags.map((t) => <Tag name={t} />)}
+        </div>
+      </div>
+    </div>
+
+    <div class="river-col"><River anchor="bottom" /></div>
+
+    <ul class="post-list">
+      {posts.map((post) => <li><PostCard post={post} /></li>)}
+    </ul>
+  </div>
+</Page>

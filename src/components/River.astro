@@ -1,0 +1,99 @@
+---
+/**
+ * The Anduin, running down the article gutter.
+ *
+ * The course is generated rather than drawn, so it fits any post length: a
+ * smooth vertical meander about the column centre, with the name set along it
+ * the way a map labels a river.
+ *
+ * Two courses are rendered and swapped by CSS, not one scaled course — same
+ * decision as Terrain. A narrow column gets a shallower meander and no label;
+ * scaling the wide one would thin the stroke and squash the lettering.
+ *
+ * Height is deliberately longer than any post. `.river-col` positions this
+ * absolutely and clips it, so the course never contributes to page height —
+ * getting that wrong makes the river define the page length instead of the
+ * content.
+ */
+interface Props {
+  /** Course length. Cropped to the real height by the positioning column. */
+  height?: number;
+  /**
+   * Which end is pinned, and therefore which end is guaranteed to sit on the
+   * column's centre line. The crop happens at the other end.
+   *
+   * `bottom` for the article river: it must hand off to the footer at a known
+   * x, and its top is hidden under the title rule anyway. `top` for the footer
+   * river: it must pick that hand-off up, and its tail runs off the page.
+   */
+  anchor?: 'top' | 'bottom';
+}
+const { height = 6000, anchor = 'top' } = Astro.props;
+
+function meander(h: number, w: number, amplitude: number, period: number): string {
+  const cx = w / 2;
+  const points: [number, number][] = [];
+  let dir = -1;
+
+  if (anchor === 'bottom') {
+    // Walk upward from the end, so the LAST point is exactly on centre.
+    let y = h;
+    points.push([cx, h]);
+    while (y > 0) {
+      y = Math.max(y - period, 0);
+      points.push([cx + dir * amplitude, y]);
+      dir *= -1;
+    }
+    points.reverse();
+  } else {
+    let y = 0;
+    points.push([cx, 0]);
+    while (y < h) {
+      y = Math.min(y + period, h);
+      points.push([cx + dir * amplitude, y]);
+      dir *= -1;
+    }
+  }
+  let d = `M ${points[0][0]} ${points[0][1]}`;
+  for (let i = 1; i < points.length; i++) {
+    const [x0, y0] = points[i - 1]!;
+    const [x1, y1] = points[i]!;
+    const k = (y1 - y0) * 0.5;
+    d += ` C ${x0} ${(y0 + k).toFixed(1)}, ${x1} ${(y1 - k).toFixed(1)}, ${x1} ${y1}`;
+  }
+  return d;
+}
+
+const wide = meander(height, 56, 11, 440);
+const narrow = meander(height, 10, 3, 380);
+const id = `anduin-${Math.random().toString(36).slice(2, 9)}`;
+
+// One label per ~1100px of course, offset past the source.
+const labels = Array.from(
+  { length: Math.max(1, Math.floor(height / 1100)) },
+  (_, i) => 60 + i * 1100,
+);
+---
+<div class="river" aria-hidden="true">
+  <svg class="river__wide" width="56" height={height} viewBox={`0 0 56 ${height}`} fill="none">
+    <path d={wide} stroke="var(--bank)" stroke-width="7" stroke-linecap="round" />
+    <path id={id} d={wide} stroke="var(--river)" stroke-width="2.2" stroke-linecap="round" />
+    {labels.map((offset) => (
+      <text
+        font-family="var(--font-prose)"
+        font-style="italic"
+        font-size="15"
+        letter-spacing="3.2"
+        fill="var(--link)"
+        fill-opacity="0.62"
+      >
+        <textPath href={`#${id}`} startOffset={offset}>anduin</textPath>
+      </text>
+    ))}
+  </svg>
+
+  <svg class="river__narrow" width="10" height={height} viewBox={`0 0 10 ${height}`} fill="none">
+    <path d={narrow} stroke="var(--bank)" stroke-width="6" stroke-linecap="round" />
+    <path d={narrow} stroke="var(--river)" stroke-width="2" stroke-linecap="round" />
+  </svg>
+</div>

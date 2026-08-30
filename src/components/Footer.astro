@@ -1,0 +1,26 @@
+---
+import Terrain from './Terrain.astro';
+import Icon from './Icon.astro';
+import River from './River.astro';
+---
+<footer class="site-footer">
+  <div class="river--footer"><River height={900} anchor="top" /></div>
+  <div class="wrap" style="padding-top: 72px">
+    <div class="rule--strong"></div>
+    <div class="site-footer__inner">
+      <div style="display: flex; flex-direction: column; gap: var(--s-1)">
+        <span style="color: var(--ink)">Michael Muehlebach</span>
+        <span style="display: flex; align-items: center; gap: 7px">
+          <a href="https://github.com/mikevader">mikevader</a>
+          <span style="color: var(--link); display: flex"><Icon name="external" size={11} /></span>
+        </span>
+      </div>
+      <div class="site-footer__links">
+        <a href="/">blog</a>
+        <a href="/projects/">projects</a>
+        <a href="/rss.xml">feed</a>
+      </div>
+    </div>
+  </div>
+  <Terrain variant="footer" />
+</footer>

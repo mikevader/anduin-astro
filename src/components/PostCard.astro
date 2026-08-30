@@ -1,0 +1,30 @@
+---
+import Tag from './Tag.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+
+/**
+ * Two of the real titles end in a parenthetical aside — "(it is simpler to buy
+ * a new printer)", "(until it's parent is satisfied)". The design sets those
+ * muted and italic, so they are split out rather than styled by hand per post.
+ */
+const match = post.data.title.match(/^(.*?)\s*(\([^()]*\))$/);
+const [, head, aside] = match ?? [null, post.data.title, null];
+
+const stamp = post.data.date.toISOString().slice(0, 10).replaceAll('-', ' · ');
+const iso = post.data.date.toISOString().slice(0, 10);
+---
+<article class="post-card">
+  <time class="meta" datetime={iso}>{stamp}</time>
+  <h3 class="post-card__title">
+    <a href={`/posts/${post.id}/`}>
+      {head}{aside && <> <span class="post-card__aside">{aside}</span></>}
+    </a>
+  </h3>
+  <p class="post-card__excerpt">{post.data.excerpt}</p>
+  <div class="tags" style="margin-top: var(--s-1)">
+    {post.data.tags.map((t) => <Tag name={t} inline />)}
+  </div>
+</article>

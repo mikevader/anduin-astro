@@ -1,0 +1,15 @@
+---
+/** Stroke icons on a 20px grid. No emoji anywhere. */
+interface Props { name: 'search' | 'menu' | 'external'; size?: number; }
+const { name, size = 15 } = Astro.props;
+---
+<svg
+  width={size} height={size} viewBox="0 0 20 20" fill="none"
+  stroke="currentColor" stroke-width="1.6"
+  stroke-linecap="round" stroke-linejoin="round"
+  aria-hidden="true" style="flex-shrink: 0"
+>
+  {name === 'search' && (<><circle cx="8.5" cy="8.5" r="5.5" /><path d="M 12.6 12.6 L 17 17" /></>)}
+  {name === 'menu' && (<><path d="M 3 6 L 17 6" /><path d="M 3 10 L 17 10" /><path d="M 3 14 L 17 14" /></>)}
+  {name === 'external' && (<><path d="M 7 4 L 16 4 L 16 13" /><path d="M 16 4 L 4 16" /></>)}
+</svg>

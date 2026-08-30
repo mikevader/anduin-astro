@@ -1,0 +1,316 @@
+/**
+ * The class vocabulary. Small and named after what things are, not how they
+ * look — `.rail` stays `.rail` when it becomes a horizontal strip on a phone.
+ */
+
+/* ---- page shell ---------------------------------------------------- */
+.wrap {
+  padding-left: var(--pad-left);
+  padding-right: var(--pad-right);
+}
+
+/* ---- the article grid ---------------------------------------------- */
+/* rail | river | body. On a phone the rail lifts out into a full-width
+   strip above the other two, which is what the mobile drawing does. */
+.grid {
+  display: grid;
+  grid-template-columns: var(--col-rail) var(--col-river) minmax(0, 1fr);
+  gap: 0 var(--gap-col);
+  align-items: start;
+}
+
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+  padding-top: calc(var(--s-7) + var(--s-2));
+  font-family: var(--font-mono);
+}
+
+/* The grid itself has no top padding — the river needs to start at the rule.
+   Its text columns carry the spacing instead. */
+.grid > .prose,
+.grid > .body-col,
+.grid > .post-list { padding-top: var(--s-7); }
+
+.rail__group { display: flex; flex-direction: column; gap: var(--s-3); }
+
+.body-col,
+.prose {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* Code is the payload: it breaks out past the prose measure. */
+.prose > * { max-width: var(--measure); }
+.prose > pre,
+.prose > .breakout { max-width: none; }
+
+/* The river column.
+   The course is absolutely positioned so it is OUT OF FLOW: a 6000px SVG in
+   normal flow would make the river define the page height instead of the
+   content. The column stretches to the row (sized by rail and body) and clips.
+   The negative top pulls the source up under the title rule, so the rule reads
+   as crossing over the river rather than sitting above a gap. */
+.river-col {
+  align-self: stretch;
+  position: relative;
+  overflow: hidden;
+  margin-top: -10px;
+}
+.river { position: absolute; top: 0; left: 0; }
+
+/* The article river is pinned to the BOTTOM of its column: its last point is
+   on the centre line, so it always hands off to the footer at the same x
+   whatever the post's length. The crop lands at the top, under the title
+   rule, where it is meant to be hidden. */
+.river-col .river { top: auto; bottom: 0; }
+
+/* The footer river picks that hand-off up and runs off the bottom of the
+   page, through the footer terrain. Same axis, no seam. */
+.site-footer { position: relative; }
+.river--footer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--river-left);
+  width: var(--col-river);
+  overflow: hidden;
+  pointer-events: none;
+}
+.site-footer > .wrap,
+.site-footer > .terrain { position: relative; }
+.river__wide { display: block; }
+.river__narrow { display: none; }
+
+/* The drop cap opens the post, and only the post. */
+.prose > p:first-of-type::first-letter {
+  float: left;
+  font-size: var(--size-dropcap);
+  line-height: 0.82;
+  padding: 6px 14px 0 0;
+  color: var(--link);
+}
+
+@media (max-width: 720px) {
+  .grid { grid-template-columns: var(--col-river) minmax(0, 1fr); }
+  .river-col { margin-top: 0; }
+  .grid > .prose,
+  .grid > .body-col,
+  .grid > .post-list { padding-top: 0; }
+  .rail {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-3) var(--s-4);
+    padding: 0 0 var(--s-4);
+    margin-bottom: var(--s-5);
+    border-bottom: 1px solid var(--rule);
+  }
+  .rail__group { flex-direction: row; flex-wrap: wrap; align-items: center; gap: var(--s-3); }
+  .rail__group .label { display: none; }
+  .river__wide { display: none; }
+  .river__narrow { display: block; }
+  .body-col, .prose { gap: 22px; }
+  .prose > p:first-of-type::first-letter { padding: 4px 10px 0 0; }
+}
+
+/* ---- small type helpers -------------------------------------------- */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--size-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.meta {
+  font-family: var(--font-mono);
+  font-size: var(--size-meta);
+  letter-spacing: var(--track-meta);
+  color: var(--muted);
+}
+
+.rule { height: 1px; background: var(--rule); }
+.rule--strong { height: 1px; background: var(--rule-strong); }
+
+/* ---- terrain -------------------------------------------------------- */
+.terrain { overflow: hidden; }
+.terrain--masthead { height: var(--masthead-terrain); }
+.terrain--footer { height: 150px; margin-top: var(--s-7); }
+.terrain__wide { display: block; }
+.terrain__narrow { display: none; }
+
+@media (max-width: 720px) {
+  .terrain--footer { height: 110px; margin-top: 30px; }
+  .terrain__wide { display: none; }
+  .terrain__narrow { display: block; }
+}
+
+/* ---- masthead ------------------------------------------------------- */
+.masthead { border-bottom: 1px solid var(--rule-strong); }
+
+.masthead__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--masthead-nav);
+}
+
+.logo {
+  font-size: var(--size-logo);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.logo:hover { color: var(--ink); }
+.logo__tld { color: var(--moss); }
+
+.nav { display: flex; align-items: center; gap: 34px; }
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--size-meta);
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+.nav__item:hover { color: var(--ink); }
+.nav__item[aria-current='page'] {
+  color: var(--ink);
+  border-bottom-color: var(--moss);
+}
+
+@media (max-width: 720px) {
+  .nav { gap: 0; }
+  /* 44px minimum hit target on touch. */
+  .nav__item {
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  .nav__item span { display: none; }
+}
+
+/* ---- tags: map legend keys ------------------------------------------ */
+.tags { display: flex; flex-wrap: wrap; gap: var(--s-4); }
+.tags--stacked { flex-direction: column; gap: 9px; }
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: var(--size-rail);
+  color: var(--muted);
+  text-decoration: none;
+}
+.tag:hover { color: var(--ink); }
+.tag--inline { gap: var(--s-2); font-size: var(--size-meta); }
+
+.tag__swatch {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border: 1px solid var(--rule-strong);
+}
+.tag--inline .tag__swatch { width: 7px; height: 7px; }
+
+.tag[aria-current='page'] { color: var(--ink); }
+.tag[aria-current='page'] .tag__swatch {
+  background: var(--river);
+  border-color: var(--river);
+}
+
+/* ---- post list ------------------------------------------------------ */
+.post-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--rule);
+}
+.post-list > li:last-child .post-card {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.post-card__title { margin: 0; }
+.post-card__title a { color: var(--ink); text-decoration: none; }
+.post-card__title a:hover { color: var(--link); }
+.post-card__aside { color: var(--muted); font-style: italic; }
+
+.post-card__excerpt {
+  font-size: var(--size-excerpt);
+  line-height: var(--leading-excerpt);
+  color: var(--muted);
+}
+
+/* ---- code block chrome ---------------------------------------------- */
+.code {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.code__caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+
+/* ---- placeholder slot ------------------------------------------------ */
+.slot {
+  border: 1px dashed var(--rule-strong);
+  padding: var(--s-3) 16px;
+  font-family: var(--font-mono);
+  font-size: var(--size-rail);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ---- footer ---------------------------------------------------------- */
+.site-footer__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-7);
+  padding-top: 26px;
+  font-family: var(--font-mono);
+  font-size: var(--size-meta);
+  line-height: var(--leading-meta);
+  color: var(--muted);
+}
+.site-footer__links { display: flex; gap: 34px; letter-spacing: var(--track-nav); text-transform: uppercase; }
+.site-footer__links a { color: var(--muted); text-decoration: none; }
+.site-footer__links a:hover { color: var(--ink); }
+
+@media (max-width: 720px) {
+  .site-footer__inner { flex-direction: column; gap: var(--s-4); }
+  .site-footer__links { gap: 26px; }
+  /* Clear the river and line up with where the body column starts. */
+  .site-footer > .wrap {
+    padding-left: calc(var(--pad-left) + var(--col-river) + var(--gap-col));
+  }
+}

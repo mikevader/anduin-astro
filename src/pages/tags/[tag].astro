@@ -1,0 +1,60 @@
+---
+import Page from '../../layouts/Page.astro';
+import PostCard from '../../components/PostCard.astro';
+import River from '../../components/River.astro';
+import Tag from '../../components/Tag.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { TAGS } from '../../content.config';
+import type { Tag as TagName } from '../../content.config';
+import type { GetStaticPaths } from 'astro';
+
+type Props = {
+  tag: TagName;
+  used: TagName[];
+  posts: CollectionEntry<'posts'>[];
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('posts', ({ data }) =>
+    import.meta.env.PROD ? !data.draft : true,
+  );
+  // Only tags that actually carry a post get a page. A tag page with nothing
+  // on it is exactly the silently-empty page ADR-0001 exists to avoid.
+  const used = TAGS.filter((t) => posts.some((p) => p.data.tags.includes(t)));
+  return used.map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      used,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+};
+
+const { tag, used, posts } = Astro.props as Props;
+---
+<Page title={`${tag} — anduin.ch`} current="blog">
+  <div class="wrap" style="padding-top: 60px">
+    <span class="label">Tagged</span>
+    <h1 style="margin-top: var(--s-4)">{tag}</h1>
+    <div class="rule" style="margin-top: var(--s-7)"></div>
+  </div>
+
+  <div class="wrap grid">
+    <div class="rail">
+      <div class="rail__group">
+        <span class="label">Tags</span>
+        <div class="tags tags--stacked">
+          {used.map((t) => <Tag name={t} current={t === tag} />)}
+        </div>
+      </div>
+    </div>
+    <div class="river-col"><River anchor="bottom" /></div>
+    <ul class="post-list">
+      {posts.map((post) => <li><PostCard post={post} /></li>)}
+    </ul>
+  </div>
+</Page>

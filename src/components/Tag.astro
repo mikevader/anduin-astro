@@ -1,0 +1,13 @@
+---
+/** A tag, set as a map legend key: swatch plus name. */
+import type { Tag } from '../content.config';
+interface Props { name: Tag; inline?: boolean; current?: boolean; }
+const { name, inline = false, current = false } = Astro.props;
+---
+<a
+  class:list={['tag', inline && 'tag--inline']}
+  href={`/tags/${name}/`}
+  aria-current={current ? 'page' : undefined}
+>
+  <span class="tag__swatch"></span><span>{name}</span>
+</a>

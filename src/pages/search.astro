@@ -1,0 +1,36 @@
+---
+import Page from '../layouts/Page.astro';
+import SearchField from '../components/SearchField.astro';
+import PlaceholderSlot from '../components/PlaceholderSlot.astro';
+import River from '../components/River.astro';
+import Tag from '../components/Tag.astro';
+import { getCollection } from 'astro:content';
+import { TAGS } from '../content.config';
+
+const posts = await getCollection('posts', ({ data }) =>
+  import.meta.env.PROD ? !data.draft : true,
+);
+const used = new Set(posts.flatMap((p) => p.data.tags));
+const tags = TAGS.filter((t) => used.has(t));
+---
+<Page title="Search — anduin.ch" current="search">
+  <div class="wrap" style="padding-top: 60px">
+    <span class="label">Browse</span>
+    <h1 style="margin-top: var(--s-4)">Search</h1>
+    <div class="rule" style="margin-top: var(--s-7)"></div>
+  </div>
+
+  <div class="wrap grid">
+    <div class="rail">
+      <div class="rail__group">
+        <span class="label">Tags</span>
+        <div class="tags tags--stacked">{tags.map((t) => <Tag name={t} />)}</div>
+      </div>
+    </div>
+    <div class="river-col"><River anchor="bottom" /></div>
+    <div class="body-col">
+      <SearchField />
+      <PlaceholderSlot>[ RESULTS — the index is not wired up yet. Tags in the rail work. ]</PlaceholderSlot>
+    </div>
+  </div>
+</Page>

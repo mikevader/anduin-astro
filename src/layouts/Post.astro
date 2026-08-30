@@ -1,0 +1,51 @@
+---
+import Page from './Page.astro';
+import River from '../components/River.astro';
+import Tag from '../components/Tag.astro';
+import Icon from '../components/Icon.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+
+const match = post.data.title.match(/^(.*?)\s*(\([^()]*\))$/);
+const [, head, aside] = match ?? [null, post.data.title, null];
+
+const stamp = post.data.date.toISOString().slice(0, 10).replaceAll('-', ' · ');
+const iso = post.data.date.toISOString().slice(0, 10);
+---
+<Page title={`${post.data.title} — anduin.ch`} description={post.data.excerpt} current="blog">
+  <div class="wrap" style="padding-top: 60px">
+    <div class="meta" style="display: flex; align-items: center; gap: 14px">
+      <time datetime={iso}>{stamp}</time>
+      <span style="width: 22px; height: 1px; background: var(--rule-strong)"></span>
+      <span>{post.data.tags[0]}</span>
+    </div>
+    <h1 style="max-width: 900px; margin-top: var(--s-5)">
+      {head}{aside && <> <span class="post-card__aside">{aside}</span></>}
+    </h1>
+    <div class="rule" style="margin-top: var(--s-7)"></div>
+  </div>
+
+  <div class="wrap grid">
+    <div class="rail">
+      <div class="rail__group">
+        <span class="label">Filed under</span>
+        <div class="tags tags--stacked">
+          {post.data.tags.map((t) => <Tag name={t} />)}
+        </div>
+      </div>
+      <div class="rail__group">
+        <span class="label">Written by</span>
+        <span style="font-size: var(--size-rail); line-height: 1.6; color: var(--muted)">
+          Michael Muehlebach<br />
+          <a href="https://github.com/mikevader">mikevader</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="river-col"><River anchor="bottom" /></div>
+
+    <div class="prose"><slot /></div>
+  </div>
+</Page>

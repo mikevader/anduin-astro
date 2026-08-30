@@ -1,0 +1,18 @@
+---
+/**
+ * Code block chrome: a caption naming the file and the language, over the
+ * block itself. Markdown fences are styled by base.css and do not get this
+ * chrome yet — wiring fence meta through to it is still open.
+ */
+interface Props { caption?: string; lang?: string; }
+const { caption, lang } = Astro.props;
+---
+<div class="code breakout">
+  {(caption || lang) && (
+    <div class="code__caption label">
+      <span>{caption}</span>
+      <span>{lang}</span>
+    </div>
+  )}
+  <slot />
+</div>

@@ -1,0 +1,120 @@
+/**
+ * Design tokens for anduin.ch.
+ *
+ * Every value here is measured, not chosen twice: the palette is defined in
+ * oklch (both accents share L .620 / C .150 and differ only in hue) and the
+ * contrast figures are computed against `--paper`, not estimated.
+ *
+ * Provenance: the coral is the Anduin as the 2004 site drew it; the moss is
+ * that site's `#af2` accent and the green in the 2005 logo.
+ */
+
+:root {
+  /* ---- ground ------------------------------------------------------ */
+  --paper: #f9f6f1;        /* oklch(.975 .008 85)  page ground            */
+  --panel: #fffdfa;        /* oklch(.995 .004 85)  raised surfaces        */
+  --code: #f2eee7;         /* oklch(.951 .011 85)  code blocks, inline    */
+
+  /* ---- lines ------------------------------------------------------- */
+  --rule: #ded8d0;         /* oklch(.885 .013 75)  hairlines within       */
+  --rule-strong: #c4bcb3;  /* oklch(.800 .016 75)  structural edges       */
+
+  /* ---- text -------------------------------------------------------- */
+  --ink: #2f2924;          /* oklch(.285 .013 60)  13.31:1                */
+  --muted: #736a63;        /* oklch(.530 .016 60)   4.91:1                */
+
+  /* Two greys for text, never three. A third (#a89e95) was removed on
+     2026-08-29 at 2.44:1 — it was carrying rail labels, code captions and
+     YAML comments. Hierarchy comes from size, tracking and case instead. */
+
+  /* ---- accents ----------------------------------------------------- */
+  --link: #b94834;         /* oklch(.550 .150 32)   4.82:1 / 4.50 on code */
+  --link-hover: #972815;   /* oklch(.450 .150 32)   7.41:1                */
+  --river: #d15e49;        /* oklch(.620 .150 32)   3.60:1 — NEVER text   */
+  --bank: #fde1db;         /* oklch(.930 .032 32)  river bank, marks      */
+  --moss: #409d48;         /* oklch(.620 .150 145)  3.18:1 — large only   */
+
+  /* ---- type -------------------------------------------------------- */
+  --font-prose: Newsreader, 'Iowan Old Style', Palatino, Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --size-page-title: 46px;
+  --size-identity: 42px;
+  --size-section: 30px;
+  --size-list-title: 27px;
+  --size-logo: 27px;
+  --size-body: 19px;
+  --size-excerpt: 17px;
+  --size-code: 14px;
+  --size-rail: 13px;
+  --size-meta: 12px;
+  --size-label: 11px;
+  --size-dropcap: 62px;
+
+  --leading-title: 1.14;
+  --leading-list-title: 1.24;
+  --leading-body: 1.72;
+  --leading-excerpt: 1.62;
+  --leading-code: 1.62;
+  --leading-meta: 1.7;
+
+  --track-title: -0.018em;
+  --track-list-title: -0.012em;
+  --track-nav: 0.1em;
+  --track-meta: 0.11em;
+  --track-label: 0.13em;
+
+  /* ---- space ------------------------------------------------------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 18px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 44px;
+  --s-8: 60px;
+  --s-9: 96px;
+
+  --radius: 2px;
+
+  /* ---- layout ------------------------------------------------------ */
+  --measure: 660px;        /* prose line length inside the body column   */
+  --col-rail: 168px;
+  --col-river: 56px;
+  --col-body: 832px;
+  --gap-col: 32px;
+  --pad-left: 96px;
+  --pad-right: 64px;
+  --masthead-nav: 108px;
+  --masthead-terrain: 168px;
+
+  /* Left edge of the river column. The footer segment is positioned from
+     this too, so both sit on one axis. */
+  --river-left: calc(var(--pad-left) + var(--col-rail) + var(--gap-col));
+}
+
+@media (max-width: 720px) {
+  :root {
+    --size-page-title: 30px;
+    --size-body: 17px;
+    --size-code: 12px;
+    --size-logo: 22px;
+    --size-dropcap: 44px;
+    --leading-title: 1.18;
+    --leading-body: 1.7;
+    --leading-code: 1.6;
+    --track-title: -0.014em;
+
+    --col-rail: 0px;
+    --col-river: 10px;
+    --col-body: 330px;
+    --gap-col: 14px;
+    --pad-left: 18px;
+    --pad-right: 18px;
+    --masthead-nav: 60px;
+    --masthead-terrain: 130px;
+
+    /* The rail lifts out on a phone, so the river is the first column. */
+    --river-left: var(--pad-left);
+  }
+}

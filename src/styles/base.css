@@ -1,0 +1,84 @@
+/**
+ * Element defaults. Everything here is the system applied to bare HTML, so
+ * markdown output is styled without the post template having to reach into it.
+ */
+
+@font-face { font-display: swap; }
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-prose);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Links — defined here so anything added later never renders browser blue. */
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+a:hover { color: var(--link-hover); }
+
+h1, h2, h3 {
+  font-weight: 400;
+  letter-spacing: var(--track-title);
+  text-wrap: pretty;
+  margin: 0;
+}
+h1 { font-size: var(--size-page-title); line-height: var(--leading-title); }
+h2 { font-size: var(--size-section); line-height: 1.2; }
+h3 { font-size: var(--size-list-title); line-height: var(--leading-list-title); }
+
+p { margin: 0; max-width: var(--measure); text-wrap: pretty; }
+
+/* Code is the payload (voice.md rule 10), so it gets the widest measure on
+   the page — it breaks out past the prose measure rather than sharing it. */
+pre {
+  margin: 0;
+  padding: var(--s-5) 26px;
+  background: var(--code);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: var(--size-code);
+  line-height: var(--leading-code);
+  /* Wrap rather than scroll: nothing hides from a reader five years out. */
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+:not(pre) > code {
+  background: var(--code);
+  padding: 1px 4px;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+
+mark {
+  background: var(--bank);
+  color: var(--ink);
+  padding: 0 2px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--rule);
+  margin: var(--s-6) 0;
+}
+
+img { max-width: 100%; height: auto; }
