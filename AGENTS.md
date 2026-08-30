@@ -32,9 +32,12 @@ Two things that run exposed, worth carrying into Iteration 3:
   its own text, which is better than none, and it is still the weakest link in the
   arrangement.
 
-Do not scaffold Iterations 3-5; their abstractions are still guesses.
-[ADR-0001](.agents/adr/0001-framework.md) (Hugo vs Astro) belongs to Iteration 3 and
-stays open.
+Do not scaffold Iterations 4-5; their abstractions are still guesses.
+**Iteration 3 (site) has started.** [ADR-0001](.agents/adr/0001-framework.md) was
+decided on 2026-08-29: **Astro**, chosen for build-time validation that fails loudly.
+The design is settled and drawn; its specification is the design-system sheet in the
+canvas. The component library is the site's source of truth — the website and any
+Claude Design sync are both built from it, in that order.
 
 ## Working language
 
@@ -153,6 +156,6 @@ status: dump | captured | stub | drafted | blocked | ready
 | `blocked` | reviewed, a hard gate failed |
 | `ready` | reviewed, passes |
 
-Published posts do not live here. Where they go is Iteration 3 and depends on
-[ADR-0001](.agents/adr/0001-framework.md), which is why this directory is called
-`pipeline/` and not `content/`.
+Published posts do not live here. They move into Astro's `src/content/` when a
+record reaches `ready` ([ADR-0001](.agents/adr/0001-framework.md)), which is why this
+directory is called `pipeline/` and not `content/`.

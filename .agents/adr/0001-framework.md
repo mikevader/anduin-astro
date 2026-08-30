@@ -1,7 +1,7 @@
 # ADR-0001: Static site framework - Hugo or Astro
 
-- **Status:** Open
-- **Date:** 2026-08-28
+- **Status:** Accepted
+- **Date:** 2026-08-28, decided 2026-08-29
 - **Question:** which static site generator builds anduin.ch?
 
 ## Context
@@ -31,6 +31,14 @@ tag or a missing frontmatter field. Hugo more often renders the page with a sile
 empty field — a failure mode that pairs badly with an agent that writes content
 unattended.
 
+**A second axis arrived on 2026-08-29**, after the design work in this repo produced
+a component inventory ([System.dc.html](../../System.dc.html)) and `/design-sync` was
+run against the repo. It could not run, and the reason generalises: syncing a design
+system to Claude Design consumes a **compiled component library**. Astro leaves real
+components behind. Hugo leaves partials and Go templates, which that path has no way
+to consume. This does not decide the ADR on its own — the site does not depend on the
+sync — but it is a real cost that only lands on one side.
+
 **Bias to name explicitly:** this repo is called `anduin-hugo`. The name predates the
 decision and is not evidence for it.
 
@@ -51,17 +59,46 @@ untouched for a year.
 
 ## Decision
 
-Not yet. Blocked on nothing external — it needs a deliberate call now that the content
-profile is known. To decide it: weigh Astro's build-time validation against Hugo's
-zero-maintenance toolchain, given that this site will go long stretches without being
-touched and that the agent needs a way to check its own output.
+**Astro.**
+
+Verification decided it. This entire harness exists because of one failure mode: a
+capable model produces fluent, plausible output and future-me cannot tell which parts
+were real. C3 answers that for prose. Nothing answered it for the site build until
+now. Astro's content collections fail the build on a malformed tag or a missing
+frontmatter field; Hugo renders the page with the field silently empty. Choosing the
+toolchain that stays quiet when something is wrong would have contradicted the reason
+the harness was built.
+
+The design-system axis pointed the same way and cost nothing to follow.
+
+Hugo's zero-maintenance toolchain was the real argument against, and it was not
+dismissed — it is priced in below.
 
 ## Consequences
 
-To be filled in when decided.
+- **Node toolchain maintenance is now a recurring tax**, and it lands hardest exactly
+  where this site is weakest: long untouched stretches. A cold start after a year will
+  plausibly need a dependency bump before it builds at all. This is the cost that was
+  accepted, not one that was argued away. Lockfile is committed; versions are pinned;
+  a build that fails after a long gap is expected maintenance, not a regression.
+- **Hugo's single binary is given up.** If the toolchain tax turns real, this is what
+  is missed, and reopening means a full template rewrite — the migration cost is not
+  symmetric.
+- **A component library becomes the site's source of truth**, not an optional layer.
+  The library is the executable form of [System.dc.html](../../System.dc.html), the
+  website is built from it, and the Claude Design sync consumes the same build. That
+  fork is the sequencing: library first, then the site and the sync independently.
+- **The repo name `anduin-hugo` is now actively wrong** and should be renamed.
+- **The site lives in this repo**, per the handoff brief and
+  [ADR-0006](0006-pipeline-in-repo.md). The repo stays private because of `pipeline/`;
+  only built output is published.
+- For this to keep being right, build-time validation has to actually catch agent
+  mistakes. If schema errors turn out to be rare and the toolchain tax turns out to be
+  frequent, the trade inverts.
 
 ## Revisit when
 
-Decide before Iteration 3 (site + migration) starts. Reopen if unattended agent
-authoring turns out to produce silently broken pages, or if toolchain maintenance
-turns into a recurring tax.
+Reopen if a cold build after a long gap costs more than an afternoon more than once,
+or if content-collection validation turns out not to catch the failures it was chosen
+for. Do not reopen over the design-sync axis alone — that path is a consumer of the
+library, not a reason to keep it.
