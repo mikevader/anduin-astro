@@ -1,11 +1,11 @@
 # AGENTS.md
 
-How an agent works in this repo. [HARNESS-HANDOFF.md](HARNESS-HANDOFF.md) holds the
-iteration plan; this file is the working agreement.
+How an agent works in this repo. [ITERATIONS.md](ITERATIONS.md) holds the iteration
+plan; this file is the working agreement.
 
 **Where two documents disagree, the one that owns the subject wins** — the deciding
-ADR, then CONTEXT.md, voice.md and design.md for their own subjects. HARNESS-HANDOFF.md
-owns only the plan and loses every other conflict
+ADR, then CONTEXT.md, voice.md and design.md for their own subjects. ITERATIONS.md owns
+only the plan and loses every other conflict
 ([ADR-0010](.agents/adr/0010-brief-not-authoritative.md)).
 
 Before writing anything about the subject matter, read [CONTEXT.md](CONTEXT.md).
@@ -17,33 +17,13 @@ Before changing anything the site looks like, read
 ## What this repo is
 
 The site (anduin.ch — blog with tags and search, plus a projects page) and the harness
-that produces it. The harness is being built first, deliberately.
+that produces it. The harness is being built first, deliberately, in five iterations —
+the plan, the exit tests and where each one stands are in
+[ITERATIONS.md](ITERATIONS.md).
 
-**Iteration 1 of 5 (foundation) is complete.** The exit test passed on 2026-08-28: a
-draft written from a raw five-line dump, using only CONTEXT.md and voice.md, was judged
-recognizably mine.
+## Sessions
 
-**Iteration 2 (capture to draft) is complete.** The exit test passed on 2026-08-28: the
-AirPrint dump went through `/grill`, `/draft` and `/review` and came out as a post
-judged "grundsätzlich passt es". The one thing missing from it — the dump's links had
-been credited by name and dropped as URLs — became
-[ADR-0007](.agents/adr/0007-links-survive.md) rather than a one-off fix.
-
-Two things that run exposed, worth carrying into Iteration 3:
-
-- **The verdict flipped from `stub` to `post` on a single late answer.** Three rounds in,
-  the substance gate had nothing quotable behind it. The interrogation is worth running
-  to the end even when it feels dry.
-- **The same session wrote and reviewed the draft.** It found six untraceable claims in
-  its own text, which is better than none, and it is still the weakest link in the
-  arrangement.
-
-Do not scaffold Iterations 4-5; their abstractions are still guesses.
-**Iteration 3 (site) has started.** [ADR-0001](.agents/adr/0001-framework.md) was
-decided on 2026-08-29: **Astro**, chosen for build-time validation that fails loudly.
-The design is settled and drawn; its specification is the design-system sheet in the
-canvas. The component library is the site's source of truth — the website and any
-Claude Design sync are both built from it, in that order.
+**One iteration per session.** Clear context between them.
 
 ## Working language
 
@@ -65,8 +45,8 @@ actually known and which were filled in. That is worse than no post.
 ### C1 - Interrogate before drafting
 
 The primary job is not writing, it is interrogation. Extract what only I know: what I
-tried first, what broke, which version, why I rejected the obvious approach, how long
-it cost me. Drafting starts after that, never before. A draft produced without
+tried first, what broke, which version, why I rejected the obvious approach. Drafting
+starts after that, never before. A draft produced without
 interrogation violates C1 even when it reads well — especially when it reads well.
 
 ### C2 - Refusing to write is a valid outcome
@@ -134,11 +114,11 @@ ask questions would fill gaps instead of refusing.
 AGENTS.md            # this file
 CLAUDE.md            # symlink -> AGENTS.md
 CONTEXT.md           # vocabulary, audience, homelab facts, redaction rules
-HARNESS-HANDOFF.md   # iteration plan, and nothing else it owns
+ITERATIONS.md        # iteration plan, status, and nothing else it owns
 .agents/
   voice.md           # samples and prohibitions
   design.md          # tokens, type, grid, components, prohibitions
-  adr/               # template.md, 0001-* .. 0010-*
+  adr/               # template.md, 0001-* .. 0012-*
 .claude/
   skills/            # grill, draft, review, redaction-check, source-trace
 pipeline/            # dumps, capture records, drafts - one file per topic

@@ -7,7 +7,7 @@
 ## Context
 
 An architecture review on 2026-08-30 walked
-[HARNESS-HANDOFF.md](../../HARNESS-HANDOFF.md) against the documents written after it,
+[HARNESS-HANDOFF.md](../../ITERATIONS.md) against the documents written after it,
 and found two statements that were not merely old but wrong:
 
 - The site list still required the site to be **internationalized**.
@@ -64,10 +64,11 @@ change at different rates.
 | How I write | [voice.md](../voice.md) |
 | How the site looks | [design.md](../design.md) |
 | How an agent works here | [AGENTS.md](../../AGENTS.md) |
-| The iteration plan | [HARNESS-HANDOFF.md](../../HARNESS-HANDOFF.md) |
+| The iteration plan | [ITERATIONS.md](../../ITERATIONS.md) |
 
-Where two disagree, the owner of that subject wins. **HARNESS-HANDOFF.md owns only the
-plan and loses every other conflict.**
+Where two disagree, the owner of that subject wins. **ITERATIONS.md owns only the plan
+and loses every other conflict.** It was called `HARNESS-HANDOFF.md` when this was
+decided; it was renamed on 2026-09-27, once the trim left it holding only the plan.
 
 Applied on 2026-08-30: the brief's site requirement list, its audience paragraph, and
 its two opening lines instructing an agent to "work through Iteration 1 only" were
@@ -92,6 +93,29 @@ deleted. Its harness jobs and side goal stayed — nothing else owns them, and
   paragraph at the top of the file every agent already reads.
 - **Nothing enforces this.** It is a reading rule, not a gate; the next contradiction
   will also be found by accident. Making it mechanical was not attempted.
+
+## Revisited 2026-09-27 — the trigger fired, and the answer is no
+
+The first condition below was met: the brief was reduced to the iteration plan, renamed
+[ITERATIONS.md](../../ITERATIONS.md), and its remaining sections were removed after the
+value-by-value pass this ADR demanded. By the text below, this ADR should now collapse
+into a line in AGENTS.md.
+
+**It does not, because the second condition fired at the same time and points the other
+way.** The value-by-value pass found the cost clause in AGENTS.md's own C1 — *"how long
+it cost me"* — contradicting [ADR-0003](0003-post-done.md), which struck cost as an
+interrogation axis, and `.claude/skills/grill/SKILL.md`, which says "Do not ask what it
+cost." The brief did not contain that clause. **AGENTS.md was the drifting document, and
+the brief was the correct one.**
+
+So the rule is not about the brief. It is about any document outranking its subject's
+owner, and it earned its keep on a document this ADR did not suspect. It stays, with the
+ownership table as its content and the brief demoted to one row of it.
+
+That pass also found two more values held only by the brief —
+[ADR-0011](0011-harness-in-website-repo.md) (harness in the website repo) and the
+Flannel/CoreDNS seed list, dropped deliberately as unverified. Three rescues in one pass,
+against a review that had called all of it duplicate.
 
 ## Revisit when
 
