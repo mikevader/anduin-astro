@@ -1,4 +1,6 @@
 ---
+import { meanderPath, meanderPoints, RIVER } from '../lib/meander.ts';
+
 /**
  * The Anduin, running down the article gutter.
  *
@@ -30,42 +32,8 @@ interface Props {
 }
 const { height = 6000, anchor = 'top' } = Astro.props;
 
-function meander(h: number, w: number, amplitude: number, period: number): string {
-  const cx = w / 2;
-  const points: [number, number][] = [];
-  let dir = -1;
-
-  if (anchor === 'bottom') {
-    // Walk upward from the end, so the LAST point is exactly on centre.
-    let y = h;
-    points.push([cx, h]);
-    while (y > 0) {
-      y = Math.max(y - period, 0);
-      points.push([cx + dir * amplitude, y]);
-      dir *= -1;
-    }
-    points.reverse();
-  } else {
-    let y = 0;
-    points.push([cx, 0]);
-    while (y < h) {
-      y = Math.min(y + period, h);
-      points.push([cx + dir * amplitude, y]);
-      dir *= -1;
-    }
-  }
-  let d = `M ${points[0][0]} ${points[0][1]}`;
-  for (let i = 1; i < points.length; i++) {
-    const [x0, y0] = points[i - 1]!;
-    const [x1, y1] = points[i]!;
-    const k = (y1 - y0) * 0.5;
-    d += ` C ${x0} ${(y0 + k).toFixed(1)}, ${x1} ${(y1 - k).toFixed(1)}, ${x1} ${y1}`;
-  }
-  return d;
-}
-
-const wide = meander(height, 56, 11, 440);
-const narrow = meander(height, 10, 3, 380);
+const wide = meanderPath(meanderPoints({ ...RIVER.wide, height, anchor }));
+const narrow = meanderPath(meanderPoints({ ...RIVER.narrow, height, anchor }));
 const id = `anduin-${Math.random().toString(36).slice(2, 9)}`;
 
 // One label per ~1100px of course, offset past the source.
