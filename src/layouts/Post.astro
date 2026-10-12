@@ -7,6 +7,7 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props { post: CollectionEntry<'posts'>; }
 const { post } = Astro.props;
+const { migrated } = post.data;
 
 const match = post.data.title.match(/^(.*?)\s*(\([^()]*\))$/);
 const [, head, aside] = match ?? [null, post.data.title, null];
@@ -42,6 +43,14 @@ const iso = post.data.date.toISOString().slice(0, 10);
           <a href="https://github.com/mikevader">mikevader</a>
         </span>
       </div>
+      {migrated && (
+        <div class="rail__group">
+          <span class="label">Migrated</span>
+          <span style="font-size: var(--size-rail); line-height: 1.6; color: var(--muted)">
+            from WordPress{migrated.corrections > 0 && <>,<br />typos corrected,<br />wording unchanged</>}
+          </span>
+        </div>
+      )}
     </div>
 
     <div class="river-col"><River anchor="bottom" /></div>

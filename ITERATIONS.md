@@ -57,8 +57,16 @@ library is built and is the site's source of truth;
 [.agents/design.md](.agents/design.md) is the design record, and the canvas it replaced
 has been retired. [ADR-0008](.agents/adr/0008-astro-components-no-design-sync.md) ruled
 out a Claude Design sync: `.astro` files compile server-side only, so there is no
-client-mountable bundle for it to consume. The exit test — one old page migrated, with a
-report of what could not be carried over — has not been run.
+client-mountable bundle for it to consume.
+
+The migration is prepared but not run. [ADR-0014](.agents/adr/0014-wordpress-migration.md)
+records how the WordPress posts come over (live source, `/posts/<slug>/` with redirect
+pages at the old paths, typos corrected with a visible note, comments left behind), and
+[ADR-0009](.agents/adr/0009-build-time-image-optimisation.md) is closed on Astro's assets
+pipeline. The `migrate` skill, the redirect route and the migrated-post note exist. No post
+has been migrated: on 2026-10-12 `anduin.ch` was still blocked by the session's network
+policy. The exit test — one old page migrated, with a report of what could not be
+carried over — has not been run.
 
 ### Two things that still run exposed
 

@@ -54,6 +54,20 @@ const posts = defineCollection({
 
     /** Kept out of the production build while still rendering in dev. */
     draft: z.boolean().default(false),
+
+    /**
+     * Set on posts carried over from the WordPress site (ADR-0014), and only
+     * there. `from` is the old permalink: a redirect page is built at its path,
+     * so the list of redirects is this field and nothing else. `corrections` is
+     * the number of typos fixed under ADR-0004 rule A; the list itself is in
+     * pipeline/migration/report.md. Either way the post says it was migrated.
+     */
+    migrated: z
+      .object({
+        from: z.url({ protocol: /^https?$/, hostname: /^(www\.)?anduin\.ch$/ }),
+        corrections: z.number().int().min(0),
+      })
+      .optional(),
   }),
 });
 
