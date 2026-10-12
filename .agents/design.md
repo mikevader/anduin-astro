@@ -322,10 +322,16 @@ title block and above the footer.
 | Page | Rail | Body |
 |---|---|---|
 | Home (`index.astro`) | Tag index | Identity block, bracketed standfirst, post list |
-| Post (`Post.astro`) | Filed under, written by | Title block, prose with drop cap, code blocks |
+| Post (`Post.astro`) | Filed under, written by, migrated (only on posts from the old site) | Title block, prose with drop cap, code blocks |
 | Tag (`tags/[tag].astro`) | Tag index, current one active | Filtered post list |
 | Search (`search.astro`) | Tag index | Search field, results |
 | Projects (`projects.astro`) | Bracketed filter slots | Bracketed candidate slots only |
+
+**Migrated posts say so** ([ADR-0014](adr/0014-wordpress-migration.md)). A third
+rail group, `Migrated`, appears only when the post has `migrated` in its frontmatter:
+"from WordPress", plus "typos corrected, wording unchanged" when there were
+corrections. Same type and colour as "Written by". No badge, no box, no banner over
+the prose: the note is metadata, and the rail is where metadata goes.
 
 **The projects page is structure only, on purpose.** CONTEXT.md: *"No priority,
 no structure, no copy yet. Do not invent one."* The three candidate names it

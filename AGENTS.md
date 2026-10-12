@@ -101,12 +101,17 @@ section of a record is where the rules apply in full. **This repo is private, an
 | `grill` | user | dump → capture record, verdict `post` or `stub` | never; a `stub` verdict is its own valid outcome |
 | `draft` | user | capture record → draft | no record, thin record, paraphrased answers, `stub` verdict, or the substance gate cannot be met by quotation |
 | `review` | user | draft → verdict `ready` or `blocked` | — blocks only on the three hard gates |
+| `migrate` | user | one old WordPress post → post in `src/content/posts/` + report entry | `anduin.ch` unreachable, or the post is already migrated |
 | `redaction-check` | model | one value → allowed or not | — |
 | `source-trace` | model | one claim → sourced or marked | — |
 
 I run them in order and by hand. **They deliberately cannot chain.** The gap between
 `/grill` and `/draft` is the human step that makes C1 real, and a `/draft` that could
 ask questions would fill gaps instead of refusing.
+
+`migrate` sits outside that chain: an old post was written and published long ago, so
+there is nothing to interrogate, and the skill carries it over instead of drafting it
+([ADR-0014](.agents/adr/0014-wordpress-migration.md)).
 
 ## Layout
 
@@ -118,10 +123,11 @@ ITERATIONS.md        # iteration plan, status, and nothing else it owns
 .agents/
   voice.md           # samples and prohibitions
   design.md          # tokens, type, grid, components, prohibitions
-  adr/               # template.md, 0001-* .. 0013-*
+  adr/               # template.md, 0001-* .. 0014-*
 .claude/
-  skills/            # grill, draft, review, redaction-check, source-trace
+  skills/            # grill, draft, review, migrate, redaction-check, source-trace
 pipeline/            # dumps, capture records, drafts - one file per topic
+  migration/         # raw HTML of each migrated WordPress post, and report.md
 ```
 
 ### pipeline/

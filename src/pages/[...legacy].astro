@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+/**
+ * Redirects from the WordPress permalinks to where the posts live now
+ * (ADR-0014). One page per migrated post, at its old path, derived from the
+ * post's own `migrated.from` — there is no second list to keep in sync.
+ *
+ * A static host cannot send a 301 from here, so this is a meta refresh with a
+ * canonical link: browsers follow it at once and search engines treat it as a
+ * permanent move. A host-level 301 can replace it later without touching the
+ * posts.
+ */
+
+export const getStaticPaths = (async () => {
+  // Paths the site already uses. An old permalink landing on one is a bug.
+  // Inside the function: Astro runs getStaticPaths outside the frontmatter.
+  const TAKEN = ['posts', 'tags', 'projects', 'search', 'terrain', 'rss.xml'];
+  const posts = await getCollection('posts', ({ data }) => data.migrated !== undefined);
+  const seen = new Map<string, string>();
+  return posts.map((post) => {
+    const path = new URL(post.data.migrated!.from).pathname.replace(/^\/+|\/+$/g, '');
+    // Fail the build rather than shadow a page or redirect one post to another.
+    if (path === '') {
+      throw new Error(`${post.id}: old permalink ${post.data.migrated!.from} has no path; a query-string permalink cannot be redirected statically`);
+    }
+    if (TAKEN.includes(path.split('/')[0]!)) {
+      throw new Error(`${post.id}: old permalink /${path}/ collides with a route of the new site`);
+    }
+    if (seen.has(path)) {
+      throw new Error(`${post.id}: old permalink /${path}/ is already used by ${seen.get(path)}`);
+    }
+    seen.set(path, post.id);
+    return { params: { legacy: path }, props: { target: `/posts/${post.id}/`, title: post.data.title } };
+  });
+}) satisfies GetStaticPaths;
+
+const { target, title } = Astro.props as { target: string; title: string };
+const canonical = new URL(target, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={canonical} />
+    <title>{title} — anduin.ch</title>
+  </head>
+  <body>
+    <p>This post has moved to <a href={target}>{canonical}</a>.</p>
+  </body>
+</html>

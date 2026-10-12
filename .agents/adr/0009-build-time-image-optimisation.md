@@ -1,7 +1,7 @@
 # ADR-0009: Build-time image optimisation
 
-- **Status:** Open
-- **Date:** 2026-08-30
+- **Status:** Accepted
+- **Date:** 2026-08-30, decided 2026-10-12
 - **Question:** does the build optimise images, and with what?
 
 ## Context
@@ -54,22 +54,35 @@ by accident, in a hurry, by whoever writes that post.
 
 ## Decision
 
-Not decided. **What is missing is a single post with real images in it.** Every option
-above is currently chosen against a corpus of zero, and A's cost (how images are
-referenced in Markdown) is only measurable once the migration has produced actual
-post source.
+**A, Astro's built-in assets pipeline.** Michael chose it on 2026-10-12, when the
+migration ([ADR-0014](0014-wordpress-migration.md)) made the question concrete: the post
+quoted as voice.md Sample 5 carries a screenshot its text depends on, so "only theme
+headers" no longer holds. No reason beyond the choice was given, and none is supplied
+here.
 
-Do not close this ADR by picking A because it is the more capable option. That is
-exactly the "plausible option quietly chosen" that C3 exists to prevent.
+*What was known when it was decided:* one content image, that screenshot. The full
+inventory comes from the migration and is recorded per post in
+`pipeline/migration/report.md`.
+
+The text above said not to close this by picking A because it is the more capable
+option. It was not closed that way: it was put to Michael as a choice, with B
+recommended as the honest fit for a corpus of one image, and A was chosen.
 
 ## Consequences
 
-*(To be written when this is decided. What is already true: the requirement is now
-recorded somewhere that owns it, rather than in a document being trimmed.)*
+- Images live in `src/assets/posts/<slug>/` and are referenced relatively from the post's
+  Markdown. Astro writes optimised copies with width and height to `dist/_astro/`, and
+  **the build fails on a missing image**, the same property that decided ADR-0001.
+- A post's source is less portable: its image paths point into `src/assets/`, not at
+  plain URLs. Moving to another generator means rewriting those paths.
+- Nothing had to be configured or installed. The pipeline ships with Astro and was
+  verified on 2026-10-12 against a throwaway post: a 1200×600 PNG became a WebP with
+  `width="1200" height="600"` in the HTML.
+- New posts with images follow the same layout. `/draft` has no rule for images yet;
+  it gets one when the first record with an image reaches it.
 
 ## Revisit when
 
-The WordPress migration (Iteration 3) reports what images the six existing posts
-actually carry, or the first record in `pipeline/` reaches `ready` with an image in
-it — whichever comes first. If the migration finds only theme headers and no post
-needs an image, close this as **B** and say so.
+A post needs an image the pipeline cannot handle (animated, SVG with styling, very
+large), or the corpus stays at one image and the pipeline turns out to cost more
+in maintenance than it gives.
