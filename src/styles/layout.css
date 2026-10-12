@@ -141,6 +141,13 @@
 .terrain { overflow: hidden; }
 .terrain--masthead { height: var(--masthead-terrain); }
 .terrain--footer { height: 150px; margin-top: var(--s-7); }
+/* The footer terrain sits in open page with no rule above it to frame the
+   crop, so its lines fade in rather than all starting on one hard edge. A mask
+   on line art, not a gradient ground: the paper stays flat. */
+.terrain--footer {
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 48px);
+  mask-image: linear-gradient(to bottom, transparent, #000 48px);
+}
 .terrain__wide { display: block; }
 .terrain__narrow { display: none; }
 

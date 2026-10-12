@@ -118,7 +118,7 @@ ITERATIONS.md        # iteration plan, status, and nothing else it owns
 .agents/
   voice.md           # samples and prohibitions
   design.md          # tokens, type, grid, components, prohibitions
-  adr/               # template.md, 0001-* .. 0012-*
+  adr/               # template.md, 0001-* .. 0013-*
 .claude/
   skills/            # grill, draft, review, redaction-check, source-trace
 pipeline/            # dumps, capture records, drafts - one file per topic

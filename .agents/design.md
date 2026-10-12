@@ -230,23 +230,63 @@ height instead of the content — a bug that shipped once and was not obvious.
 
 ### The terrain
 
-Contour ground behind the masthead and the footer. 1px `--ink` stroke, no fill,
-at 11.5% (masthead) and 9% (footer).
+Contour ground behind the masthead and the footer. It has one job: to read, at
+first sight, as **a map with a river on it**. The first version was hand-drawn
+ellipses and stripes and failed exactly that; see
+[ADR-0013](adr/0013-terrain-from-a-height-field.md) for what went wrong and why
+it is now generated.
 
-Composition, read west to east: a massif with a spur running off it, the plain,
-the river crossing, rising ground, then a range running north–south off both
-edges with a valley cutting west into it — contours pointing upstream, which is
-how a map draws a valley. Same profile as the ground between Minas Tirith and
-Minas Morgul.
+**Composed, not traced.** The landforms are placed by hand as a few parameters
+in [`src/lib/terrain.ts`](../src/lib/terrain.ts) and summed into a height
+field, which [`src/lib/contour.ts`](../src/lib/contour.ts) contours at build
+time. Nothing is lifted from Tolkien's map artwork and no place names appear on
+it. Keep it that way.
 
-**It is drawn, not traced.** Nothing is lifted from Tolkien's map artwork and no
-place names appear on it. Keep it that way.
+Composition, read west to east: a massif off the left edge with a spur running
+east from it, the plain at its foot, the river crossing the band from the
+north-east and leaving it heading south, hill country rising east of it, then a
+range running north–south off both edges with a vale cutting west into it. A
+stream comes out of the vale and crosses the hill country to join the river.
+Beyond the range, high ground. The ground between Minas Tirith and Minas Morgul.
 
-The narrow variant is redrawn, not cropped or scaled: the massif moves right so
-the river still exits low and left, on the axis the article river runs down.
+**What makes it read as a map.** These are load-bearing; a change that loses one
+of them loses the map.
 
-Only the masthead terrain carries a river. The footer's is drawn by the
-continuous page river so the two join without a seam.
+- **One surface.** Every line is a level of the same height field, so lines nest
+  and never cross, and no line starts or stops in open ground.
+- **The river cuts the ground.** The water level falls along the course and the
+  banks rise about 1.5× as fast, so every contour that reaches the river crosses
+  it in a V pointing upstream. Same for the stream and its vale.
+- **Index contours.** Every fifth line is heavier.
+- **A tributary.** Rivers on maps branch; one stream is enough to say so.
+
+| | Masthead | Footer |
+|---|---|---|
+| Contours | 1px `--ink` at 15% | 1px `--ink` at 11% |
+| Index contours | 1.3px `--ink` at 26% | 1.3px `--ink` at 19% |
+| River | 2.2px `--river` over 7px `--bank` (2 over 6 narrow) | the page river (§6, The river) |
+| Stream | 1.2px `--river` at 75% | — |
+| Width | 2560, so no screen sees the edge | 2560 |
+
+The narrow variant is **the same world at a smaller scale**, not a crop or a
+scaled copy: the masthead window is scaled to 0.42 about the point where the
+river leaves it, so the river still exits low and left on the axis the article
+river runs down, and the contour interval doubles so the line density holds.
+The stroke stays 1px.
+
+Only the masthead terrain draws a river. The footer's is drawn by the continuous
+page river so the two join without a seam; the footer contours are cut where
+that river actually runs, using the same meander code (`src/lib/meander.ts`).
+The footer terrain fades in over its top 48px: it sits in open page with no rule
+to frame the crop. That is a mask on line art, not a gradient ground (§9).
+
+**Two values are mirrored from the layout**, because build-time art cannot read
+CSS: `RIVER_LEFT` (`--river-left`) and `FOOTER_OFFSET` (the footer's height above
+its terrain, measured). Change either side and the other must follow.
+
+**Delivery.** The lines are four standalone SVGs at `/terrain/<variant>-<size>.svg`,
+pulled in with `<use>` and cached across pages; colour and weight are set on the
+`<use>`, so the tokens stay in CSS. The rivers are small and stay inline.
 
 ---
 
@@ -326,7 +366,9 @@ Recorded so they are not mistaken for finished decisions.
 - **Code fence chrome.** Markdown fences get the styling but not the
   caption/language header — wiring fence metadata through to `CodeBlock` is not
   done.
-- **The terrain crop** is redrawn per breakpoint by hand rather than derived.
+- **The footer terrain offset** is measured, not derived. If the footer's
+  content changes height, the contour V's drift off the footer river. See
+  [ADR-0013](adr/0013-terrain-from-a-height-field.md).
 - **Spacing normalisation.** See §5.
 - **The tag vocabulary** in `src/content.config.ts` is derived from the existing
   corpus, not confirmed. It is a closed enum, so a wrong entry blocks a build.

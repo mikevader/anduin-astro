@@ -1,106 +1,57 @@
 ---
+import { footer, masthead } from '../lib/terrain.ts';
+
 /**
- * The contour ground. Drawn, not traced.
+ * The contour ground. Composed, not traced.
  *
- * Read west to east: a massif with a spur running off it, the plain, the river
- * crossing, rising ground, then a range running north-south off both edges with
- * a valley cutting west into it — contours pointing upstream, which is how a
- * map draws one. Same profile as the ground between Minas Tirith and Minas
- * Morgul; nothing is lifted from Tolkien's map and no place names appear.
+ * The lines are contoured at build time from a height field in
+ * `src/lib/terrain.ts`, which is where the landforms are composed and
+ * described. What this component adds is how they are drawn.
  *
- * The narrow variant is redrawn rather than scaled: the massif moves right so
- * the river still exits low and left, on the axis the article river runs down.
+ * The masthead reads west to east: a massif with a spur, the plain, the river,
+ * hill country rising to a range with a vale cutting into it. The ground
+ * between Minas Tirith and Minas Morgul; nothing is lifted from Tolkien's map
+ * and no place names appear.
  *
- * Only the masthead variant carries a river. The footer's is drawn by a
- * continuous <River> running the height of the footer, so it joins the
- * article river without a seam.
+ * Every fifth contour is an index contour, drawn heavier — the convention
+ * that makes a set of lines read as a map at a glance.
+ *
+ * The narrow variant is the same world at a smaller scale, not a crop or a
+ * scaled copy: the stroke stays 1px and the contour interval doubles.
+ *
+ * The lines live in `/terrain/<variant>-<size>.svg` and are pulled in with
+ * `<use>`, so they are fetched once and cached rather than inlined into every
+ * page. The rivers are a few hundred bytes and stay inline.
+ *
+ * Only the masthead variant draws a river. The footer's is drawn by a
+ * continuous <River> running the height of the footer, so it joins the article
+ * river without a seam; the footer contours are cut where that river runs.
  */
 interface Props {
   /** `masthead` carries the river; `footer` is the lower plain. */
   variant?: 'masthead' | 'footer';
 }
 const { variant = 'masthead' } = Astro.props;
-const opacity = variant === 'masthead' ? 0.115 : 0.09;
+const art = variant === 'masthead' ? masthead() : footer();
+const opacity = variant === 'masthead' ? { lines: 0.15, index: 0.26 } : { lines: 0.11, index: 0.19 };
+const stroke = { wide: { bank: 7, river: 2.2 }, narrow: { bank: 6, river: 2 } };
 ---
-
-{variant === 'masthead' ? (
-  <div class="terrain terrain--masthead">
-    <svg class="terrain__wide" width="1280" height="168" viewBox="0 0 1280 168" fill="none" aria-hidden="true">
-      <g stroke="var(--ink)" stroke-width="1" opacity={opacity}>
-        <path d="M 160 88 C 176 86, 186 94, 184 104 C 182 114, 168 118, 156 114 C 146 110, 144 96, 152 90 Z" />
-        <path d="M 152 74 C 180 70, 202 84, 200 102 C 198 122, 174 132, 150 128 C 128 124, 118 104, 126 88 C 132 78, 140 76, 152 74 Z" />
-        <path d="M 144 58 C 184 52, 218 72, 218 100 C 218 130, 184 146, 146 142 C 112 138, 94 112, 104 86 C 112 68, 124 61, 144 58 Z" />
-        <path d="M 134 40 C 190 32, 238 60, 238 100 C 238 142, 190 164, 138 158 C 92 152, 66 118, 80 82 C 92 54, 108 44, 134 40 Z" />
-        <path d="M 122 20 C 196 10, 260 48, 258 100 C 256 156, 194 184, 128 176 C 70 168, 36 124, 54 76 C 70 38, 92 24, 122 20 Z" />
-        <path d="M 108 -6 C 204 -18, 284 34, 280 102 C 276 174, 200 208, 116 198 C 44 190, 4 132, 26 70 C 46 20, 74 -2, 108 -6 Z" />
-        <path d="M 296 112 C 308 110, 314 117, 312 124 C 310 131, 298 133, 291 128 C 287 124, 289 114, 296 112 Z" />
-        <path d="M 292 102 C 314 99, 326 112, 322 126 C 318 140, 296 144, 283 136 C 274 130, 277 108, 292 102 Z" />
-        <path d="M 356 104 C 470 98, 590 114, 706 102 C 812 92, 872 106, 930 98" />
-        <path d="M 344 130 C 462 122, 582 140, 702 128 C 820 116, 880 134, 940 126" />
-        <path d="M 350 156 C 468 148, 588 166, 708 154 C 828 142, 888 160, 948 152" />
-        <path d="M 1076 40 C 1090 40, 1096 60, 1094 84 C 1092 110, 1084 128, 1072 128 C 1060 128, 1054 108, 1056 84 C 1058 58, 1064 40, 1076 40 Z" />
-        <path d="M 1072 8 C 1096 8, 1110 44, 1108 88 C 1106 134, 1092 164, 1068 162 C 1046 160, 1034 122, 1038 80 C 1042 36, 1052 8, 1072 8 Z" />
-        <path d="M 1068 -28 C 1104 -28, 1126 28, 1124 90 C 1122 156, 1100 198, 1064 196 C 1030 194, 1012 136, 1018 74 C 1024 12, 1038 -28, 1068 -28 Z" />
-        <path d="M 1062 -64 C 1112 -64, 1142 12, 1140 92 C 1138 178, 1108 234, 1058 230 C 1012 226, 988 150, 996 66 C 1004 -16, 1024 -64, 1062 -64 Z" />
-        <path d="M 1054 -100 C 1120 -100, 1158 -4, 1156 94 C 1154 200, 1116 268, 1050 264 C 990 260, 962 164, 972 58 C 982 -44, 1010 -100, 1054 -100 Z" />
-        <path d="M 936 62 C 964 68, 984 78, 996 84 C 984 90, 964 100, 936 106" />
-        <path d="M 922 48 C 958 57, 986 72, 1004 84 C 986 96, 958 111, 922 120" />
-        <path d="M 1240 10 C 1266 6, 1284 24, 1282 48 C 1280 74, 1258 86, 1238 80 C 1222 74, 1218 40, 1230 22 Z" />
-        <path d="M 1234 -14 C 1272 -20, 1298 8, 1296 48 C 1294 88, 1262 106, 1232 96 C 1208 88, 1204 12, 1234 -14 Z" />
-      </g>
-      <path d="M 250 -12 C 252 24, 268 44, 272 74 C 276 104, 300 118, 306 140 C 312 158, 320 166, 324 180" stroke="var(--bank)" stroke-width="7" stroke-linecap="round" />
-      <path d="M 250 -12 C 252 24, 268 44, 272 74 C 276 104, 300 118, 306 140 C 312 158, 320 166, 324 180" stroke="var(--river)" stroke-width="2.2" stroke-linecap="round" />
-    </svg>
-
-    <svg class="terrain__narrow" width="390" height="130" viewBox="0 0 390 130" fill="none" aria-hidden="true">
-      <g stroke="var(--ink)" stroke-width="1" opacity={opacity}>
-        <path d="M 250 66 C 264 64, 272 71, 270 79 C 268 87, 256 90, 246 87 C 238 84, 236 72, 243 68 Z" />
-        <path d="M 244 54 C 268 51, 286 62, 284 77 C 282 93, 262 101, 242 98 C 224 95, 216 79, 222 66 C 227 58, 234 56, 244 54 Z" />
-        <path d="M 238 40 C 272 35, 300 51, 300 74 C 300 99, 272 112, 240 109 C 212 106, 197 84, 205 63 C 212 48, 222 42, 238 40 Z" />
-        <path d="M 230 24 C 276 17, 316 40, 316 74 C 316 109, 276 127, 233 122 C 194 118, 173 89, 185 60 C 195 37, 208 28, 230 24 Z" />
-        <path d="M 220 6 C 282 -3, 334 28, 332 74 C 330 122, 280 145, 226 138 C 178 132, 150 96, 165 55 C 178 21, 196 9, 220 6 Z" />
-        <path d="M 210 -14 C 290 -25, 354 16, 350 74 C 346 136, 284 164, 216 156 C 158 149, 122 100, 142 46 C 158 4, 180 -11, 210 -14 Z" />
-        <path d="M 370 18 C 388 15, 400 28, 398 44 C 396 62, 380 70, 366 66 C 354 62, 352 28, 362 26 Z" />
-        <path d="M 0 96 C 60 90, 118 104, 176 95" />
-        <path d="M 0 118 C 60 112, 118 126, 176 117" />
-      </g>
-      <path d="M 138 -10 C 128 20, 96 42, 74 62 C 52 82, 30 104, 14 142" stroke="var(--bank)" stroke-width="6" stroke-linecap="round" />
-      <path d="M 138 -10 C 128 20, 96 42, 74 62 C 52 82, 30 104, 14 142" stroke="var(--river)" stroke-width="2" stroke-linecap="round" />
-    </svg>
-  </div>
-) : (
-  <div class="terrain terrain--footer">
-    <svg class="terrain__wide" width="1280" height="150" viewBox="0 0 1280 150" fill="none" aria-hidden="true">
-      <g stroke="var(--ink)" stroke-width="1" opacity={opacity}>
-        <path d="M 0 44 C 180 36, 360 54, 540 44 C 720 34, 900 52, 1080 42 C 1180 36, 1240 42, 1280 38" />
-        <path d="M 0 74 C 180 67, 360 85, 540 74 C 720 63, 900 82, 1080 71 C 1180 65, 1240 72, 1280 67" />
-        <path d="M 0 106 C 180 100, 360 118, 540 106 C 720 94, 900 114, 1080 102 C 1180 96, 1240 104, 1280 98" />
-        <path d="M 0 136 C 180 131, 360 149, 540 137 C 720 125, 900 146, 1080 133 C 1180 127, 1240 136, 1280 129" />
-        <g transform="rotate(-12 700 60)">
-          <ellipse cx="700" cy="60" rx="26" ry="13" />
-          <ellipse cx="696" cy="63" rx="52" ry="26" />
-          <ellipse cx="691" cy="66" rx="82" ry="40" />
-          <ellipse cx="685" cy="70" rx="116" ry="56" />
+<div class={`terrain terrain--${variant}`}>
+  {(['wide', 'narrow'] as const).map((size) => {
+    const a = art[size];
+    const src = `/terrain/${variant}-${size}.svg?v=${a.version}`;
+    return (
+      <svg class={`terrain__${size}`} width={a.width} height={a.height} viewBox={`0 0 ${a.width} ${a.height}`} fill="none" aria-hidden="true">
+        <g stroke="var(--ink)" stroke-linejoin="round">
+          <use href={`${src}#lines`} stroke-width="1" stroke-opacity={opacity.lines} />
+          <use href={`${src}#index`} stroke-width="1.3" stroke-opacity={opacity.index} />
         </g>
-        <g transform="rotate(8 1060 40)">
-          <ellipse cx="1060" cy="40" rx="22" ry="11" />
-          <ellipse cx="1064" cy="43" rx="46" ry="23" />
-          <ellipse cx="1069" cy="47" rx="74" ry="37" />
-        </g>
-      </g>
-    </svg>
-
-    <svg class="terrain__narrow" width="390" height="110" viewBox="0 0 390 110" fill="none" aria-hidden="true">
-      <g stroke="var(--ink)" stroke-width="1" opacity={opacity}>
-        <path d="M 0 36 C 80 30, 160 44, 240 36 C 300 30, 350 38, 390 33" />
-        <path d="M 0 62 C 80 57, 160 71, 240 62 C 300 56, 350 65, 390 59" />
-        <path d="M 0 90 C 80 85, 160 99, 240 90 C 300 84, 350 93, 390 87" />
-        <g transform="rotate(-12 262 44)">
-          <ellipse cx="262" cy="44" rx="20" ry="10" />
-          <ellipse cx="258" cy="47" rx="40" ry="20" />
-          <ellipse cx="253" cy="50" rx="64" ry="31" />
-        </g>
-      </g>
-    </svg>
-  </div>
-)}
+        {a.stream && <path d={a.stream} stroke="var(--river)" stroke-width="1.2" stroke-opacity="0.75" stroke-linecap="round" />}
+        {a.river && <>
+          <path d={a.river} stroke="var(--bank)" stroke-width={stroke[size].bank} stroke-linecap="round" />
+          <path d={a.river} stroke="var(--river)" stroke-width={stroke[size].river} stroke-linecap="round" />
+        </>}
+      </svg>
+    );
+  })}
+</div>
